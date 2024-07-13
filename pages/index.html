@@ -1,0 +1,204 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="_margin"></div>
+    <main id="catalogue" class="container">
+        <div class="left-side">
+            <h1>Фильтр</h1>
+            <div class="color filter">
+                <label for="">Цвет</label>
+                <div class="colors" id="filter-colors">
+                    <div class="item" name="1"></div>
+                    <div class="item" name="2"></div>
+                    <div class="item" name="3"></div>
+                    <div class="item" name="4"></div>
+                    <div class="item" name="5"></div>
+                    <div class="item" name="6"></div>
+                    <div class="item" name="7"></div>
+                    <div class="item" name="8"></div>
+                </div>
+            </div>
+            <div class="some filter">
+                <label for="">Ассортимент</label>
+                <div class="blocks" id="categories-filter">
+                    <div class="item" name="1">
+                        <p>Гостиная комната</p>
+                    </div>
+                    <div class="item" name="2">
+                        <p>Гостиная комната</p>
+                    </div>
+                    <div class="item" name="3">
+                        <p>Гостиная комната</p>
+                    </div>
+                    <div class="item" name="4">
+                        <p>Гостиная комната</p>
+                    </div>
+                </div>
+            </div>
+            <div class="choose filter">
+                <label for="">Высота(мм)</label>
+                <div class="choose-blocks" id="height-filter">
+                    <div class="select">
+                        <div class="check-box" name="1">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            0-10
+                        </span>
+                    </div>
+                    <div class="select">
+                        <div class="check-box" name="10">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            10-15
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="choose filter">
+                <label for="">Типы пряжи</label>
+                <div class="choose-blocks" id="type-filter">
+                    <div class="select">
+                        <div class="check-box" name="1">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            Frise
+                        </span>
+                    </div>
+                    <div class="select">
+                        <div class="check-box" name="2">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            Петлевый ворс
+                        </span>
+                    </div>
+                    <div class="select">
+                        <div class="check-box" name="3">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            Саксония
+                        </span>
+                    </div>
+                    <div class="select">
+                        <div class="check-box" name="4">
+                            <img class="" src="../assets/img/icons/check.svg" alt="">
+                        </div>
+                        <span>
+                            Велюр
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="choose filter">
+                <label for="">Ширина(м)</label>
+                <div class="choose-blocks">
+                    <form action="" id="width-filter">
+                        <input type="number" name="from" placeholder="От">
+                        <input type="number" name="to" placeholder="До">
+                    </form>
+                </div>
+            </div>
+            <button id="find-filter">
+                <p>
+                    Найти
+                </p>
+            </button>
+        </div>
+        <div class="right-side">
+            <div class="bg-logo"></div>
+            <div class="main-side">
+                <div class="banner">
+                    <h1 class="title">Создайте уют с нашими коврами</h1>
+                    <p>Высокое качество по доступным ценам</p>
+                    <ul>
+                        <label for="">Ключевые преимущества:</label>
+                        <ul>
+                            <li>Новая коллекция 2024</li>
+                            <li>Уникальные дизайны для любого интерьера</li>
+                            <li>Гарантия возврата в течение 30 дней</li>
+                        </ul>
+                    </ul>
+                    <button>Посмотреть коллекцию</button>
+                </div>
+                <div class="filter-block">
+                    <div class="search-inp">
+                        <img src="../assets/img/icons/search.svg" alt="">
+                        <input type="text" placeholder="Поиск" class="search">
+                    </div>
+                    <div class="filtr-inp">
+                        <div class="show">
+                            <p>Сортировать</p>
+                            <img src="../assets/img/icons/arrow.svg" alt="">
+                        </div>
+                        <div class="hidden">
+                            <div class="item">lorem impsun</div>
+                            <div class="item">lorem impsun</div>
+                            <div class="item">lorem impsun</div>
+                            <div class="item">lorem impsun</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <!-- <div class="carpet">
+                        <div class="img">
+                            <img src="./assets/img/test.jpg" alt="">
+                            <div class="top">
+                                <div class="show">
+                                    <img src="./assets/img/icons/eye.svg" alt="">
+                                </div>
+                                <div class="star">
+                                    <img src="./assets/img/icons/star-white.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <p>title</p>
+                            </div>
+                        </div>
+                        <div class="discription">
+                            <p>Доступные цвета</p>
+                            <div class="colors">
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                            </div>
+                            <div class="disc">
+                                <div class="width">
+                                    <p>Ширина</p>
+                                    <span>4 метра</span>
+                                </div>
+                                <div class="height">
+                                    <p>Общая высота</p>
+                                    <span>7,8 мм</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <a href="/">
+                                Подробная информация
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+                <button id="showMore">Далее</button>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"></footer>
+    <script src="../js/index.js"></script>
+    <script src="../js/usefulComp.js"></script>
+</body>
+
+</html>
