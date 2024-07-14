@@ -22,12 +22,12 @@ let registerLang = {
     "name": {
         "ru": "Имя",
         "en": "Name",
-        "uz": "Familiyasi",
+        "uz": "Ism",
     },
     "surname": {
         "ru": "Фамилия",
         "en": "Surname",
-        "uz": "Ism",
+        "uz": "Familiyasi",
     },
     "email": {
         "ru": "Почта",
