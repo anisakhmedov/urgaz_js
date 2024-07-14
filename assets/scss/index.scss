@@ -68,14 +68,14 @@ button {
             gap: 31px;
             a {
                 font-size: 24px;
-                font-weight: 500;
+                font-weight: 600;
                 color: rgb(220, 9, 9);
             }
         }
     }
     .icon-lang {
         position: relative;
-        &:hover{
+        &:hover {
             cursor: pointer;
         }
         .languages {
@@ -89,23 +89,23 @@ button {
             font-weight: 600;
             border-radius: 10px;
             overflow: hidden;
-            &.active{
+            &.active {
                 display: flex;
             }
-            div{
-                transition: .3s ease;
+            div {
+                transition: 0.3s ease;
                 padding: 10px;
                 background-color: rgb(220, 9, 9);
                 height: 100%;
-                &:hover{
+                &:hover {
                     background-color: white;
                     color: rgb(220, 9, 9);
                     cursor: pointer;
                 }
-                &:first-child{
+                &:first-child {
                     border-bottom: 1px solid white;
                 }
-                &:last-child{
+                &:last-child {
                     border-top: 1px solid white;
                 }
             }
@@ -118,8 +118,8 @@ button {
     margin-top: 21px;
     background-color: rgb(220, 9, 9);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 70px 0;
     ul {
         list-style: none !important;
@@ -128,9 +128,11 @@ button {
         max-width: 1600px;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        align-items: center;
         justify-content: center;
         z-index: 2;
+        &:first-child{
+            align-items: center;
+        }
     }
     position: relative;
     .logo-back {
@@ -151,8 +153,11 @@ button {
         }
     }
     .logo {
+        display: flex;
+        align-items: center;
         img {
             width: 100%;
+            height: 75px;
         }
     }
     div {
@@ -168,8 +173,6 @@ button {
             color: white;
             width: fit-content;
         }
-        display: flex;
-        flex-direction: column;
         gap: 12px;
         li {
             width: fit-content;
@@ -178,7 +181,6 @@ button {
                 width: fit-content;
                 color: white;
                 font-size: 18px;
-                // font-size: ;
             }
         }
     }
@@ -589,11 +591,39 @@ button {
     }
     .lang {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        select {
-            width: 100px !important;
-            height: 35px;
+        top: 20px;
+        right: 20px;
+        .languages {
+            position: absolute;
+            display: none;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            flex-direction: column;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            overflow: hidden;
+            &.active {
+                display: flex;
+            }
+            div {
+                transition: 0.3s ease;
+                padding: 10px;
+                background-color: rgb(220, 9, 9);
+                height: 100%;
+                &:hover {
+                    background-color: white;
+                    color: rgb(220, 9, 9);
+                    cursor: pointer;
+                }
+                &:first-child {
+                    border-bottom: 1px solid white;
+                }
+                &:last-child {
+                    border-top: 1px solid white;
+                }
+            }
         }
     }
     .correct {

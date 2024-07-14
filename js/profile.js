@@ -106,44 +106,37 @@ updateUser.onclick = () => {
 
 
 
-let changeLang = document.querySelector('.icon-lang')
-let addLang = document.querySelector('.languages')
+// let changeLang = document.querySelector('.icon-lang')
+// let addLang = document.querySelector('.languages')
 
-for (let item of addLang.children) {
-    console.log(item.getAttribute('class'));
-    item.onclick = () => {
-        let val = item.getAttribute('class')
-        location.href = window.location.pathname + '#' + val
-        location.reload()
-    }
-}
-const allLang = ['en', 'uz', 'ru']
+// for (let item of addLang.children) {
+//     console.log(item.getAttribute('class'));
+//     item.onclick = () => {
+//         let val = item.getAttribute('class')
+//         location.href = window.location.pathname + '#' + val
+//         location.reload()
+//     }
+// }
+// const allLang = ['en', 'uz', 'ru']
 
-let changeLangFunc = () => {
-    let hash = window.location.hash
-    hash = hash.substring(1)
-    if (!allLang.includes(hash)) {
-        location.href = window.location.pathname + '#ru'
-        location.reload()
-    }
-    // select.value = hash
-    for (let item in profileLang) {
-        if (document.querySelector('.lang-' + item).getAttribute('placeholder')) {
-            document.querySelector('.lang-' + item).setAttribute('placeholder', profileLang[item][hash])
-        } else{
-            document.querySelector('.lang-' + item).innerHTML = profileLang[item][hash]
-        }
-    }
-    console.log(hash);
-    localStorage.lang = hash
-}
+// let changeLangFunc = () => {
+//     let hash = window.location.hash
+//     hash = hash.substring(1)
+//     if (!allLang.includes(hash)) {
+//         location.href = window.location.pathname + '#ru'
+//         location.reload()
+//     }
+//     // select.value = hash
+//     for (let item in profileLang) {
+//         if (document.querySelector('.lang-' + item).getAttribute('placeholder')) {
+//             document.querySelector('.lang-' + item).setAttribute('placeholder', profileLang[item][hash])
+//         } else{
+//             document.querySelector('.lang-' + item).innerHTML = profileLang[item][hash]
+//         }
+//     }
+//     console.log(hash);
+//     localStorage.lang = hash
+// }
 
-changeLangFunc()
+// changeLangFunc()
 
-changeLang.onclick = () => {
-    if (addLang.className.includes('active')) {
-        addLang.classList.remove('active')
-    } else {
-        addLang.classList.add('active')
-    }
-}

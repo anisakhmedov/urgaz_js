@@ -1,4 +1,4 @@
-let lang = {
+let registerLang = {
     "title-reg": {
         "ru": "Зарегистрироваться",
         "en": "Sign Up",
