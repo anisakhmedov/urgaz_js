@@ -16,13 +16,13 @@ let obj_search = {
     }
 }
 
-if (localStorage.enter === 'false' || !localStorage.enter) {
-    window.location.href = window.location.href.replace('index.html', 'register.html')
-    localStorage.enter = 'false'
-} else {
-    window.location.href = window.location.href.replace('register.html', 'index.html')
-    localStorage.enter = 'true'
-}
+// if (localStorage.enter === 'false' || !localStorage.enter) {
+//     window.location.href = window.location.href.replace('index.html', 'register.html')
+//     localStorage.enter = 'false'
+// } else {
+//     window.location.href = window.location.href.replace('register.html', 'index.html')
+//     localStorage.enter = 'true'
+// }
 
 for (let item of colors_choose.children) {
     item.onclick = () => {

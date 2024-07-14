@@ -1,21 +1,25 @@
 let header = document.querySelector('.header')
 let footer = document.querySelector('.footer')
 
-// let currentPage = window.location.href.split('/')[4]
-// if (localStorage.enter === 'false' || !localStorage.enter) {
-//     window.location.href = window.location.href.replace(currentPage, 'register.html')
-//     localStorage.enter = 'false'
-// } else {
-//     window.location.href = window.location.href.replace('register.html', 'index.html')
-//     localStorage.enter = 'true'
-// }
+let currentPage = window.location.href.split('/')[4]
+if (localStorage.enter === 'false' || !localStorage.enter) {
+    window.location.href = window.location.href.replace(currentPage, 'register.html')
+    localStorage.enter = 'false'
+} else {
+    if (currentPage == 'register.html') {
+        localStorage.enter = 'true'
+        window.location.href = window.location.href.replace('register.html', 'index.html')
+    }
+}
 
 header.innerHTML = `
 <div class="logo">
-            <img src="../assets/img/logo/LOGO.png" alt="">
+            <a href="index.html">
+                <img src="../assets/img/logo/LOGO.png" alt="">
+            </a>
         </div>
         <nav class="nav-text">
-            <a href="https://www.urgaz.com/">
+            <a href="./index.html">
                 Главная
             </a>
             <a href="https://www.urgaz.com/about-us">О нас</a>
@@ -24,8 +28,15 @@ header.innerHTML = `
         </nav>
         <nav class="nav-icons">
             <img src="../assets/img/icons/star.svg" alt="">
-            <img src="../assets/img/icons/language.svg" alt="">
-            <a href="profile.html"> 
+            <div class="icon-lang">
+                <img src="../assets/img/icons/language.svg" alt="">
+                <div class="languages">
+                    <div class="ru">RUS</div>
+                    <div class="en">ENG</div>
+                    <div class="uz">UZB</div>
+                </div>
+            </div>
+            <a href="profile.html">
                 <img src="../assets/img/icons/contact.svg" alt="">
             </a>
         </nav>
@@ -217,3 +228,4 @@ if (document.querySelector('.wrapper')) {
         }
     }
 }
+

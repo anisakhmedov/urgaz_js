@@ -1,74 +1,78 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мой профиль</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body id="profile-page">
-    <header class="header"></header>
+    <header class="header">
+        
+    </header>
     <div class="_margin"></div>
     <div class="container">
         <div class="left-side">
-            <a href="#">О нас</a>
-            <a href="#">Контакты</a>
-            <a href="#" style="text-decoration: underline !important;">Мой профиль</a>
-            <a href="#">Избранное</a>
+            <a href="#" class="lang-about-us">О нас</a>
+            <a href="#" class="lang-contacts">Контакты</a>
+            <a href="#" class="lang-my-profile" style="text-decoration: underline !important;">Мой профиль</a>
+            <a href="#" class="lang-saved">Избранное</a>
         </div>
         <div class="mid-side">
             <div class="image-div">
-                <img src="" alt="">
+                <img src="" id="profile-img" alt="">
                 <div class="btns">
-                    <button id="uploadImage">Загрузить фото</button>
+                    <button id="uploadImage" class="lang-uploadImage">Загрузить фото</button>
                     <input type="file" id="correctPhoto" name="image" accept="image/*" hidden>
-                    <button id="saveImage" disabled>Сохранить</button>
+                    <button id="saveImage" class="lang-saveImage" disabled>Сохранить</button>
                 </div>
             </div>
             <form action="" id="updateUser">
                 <div class="item">
                     <div class="inp">
-                        <label for="">Имя</label>
-                        <input type="text" placeholder="Имя" name="name">
+                        <label for="" class="lang-name">Имя</label>
+                        <input type="text" class="lang-name-placeholder" placeholder="Имя" name="name">
                     </div>
                     <div class="inp">
-                        <label for="">Фамилия</label>
-                        <input type="text" placeholder="Фамилия" name="surname">
+                        <label for="" class="lang-surname">Фамилия</label>
+                        <input type="text" class="lang-surname-placeholder" placeholder="Фамилия" name="surname">
                     </div>
                 </div>
                 <div class="item">
                     <div class="inp">
-                        <label for="">Почта</label>
-                        <input type="text" placeholder="Почта" name="email">
+                        <label for="" class="lang-mail">Почта</label>
+                        <input type="text" class="lang-mail-placeholder" placeholder="Почта" name="email">
                     </div>
                     <div class="inp">
-                        <label for="">Номер телефона</label>
-                        <input type="text" placeholder="Номер телефона" name="phone">
+                        <label for="" class="lang-phone">Номер телефона</label>
+                        <input type="text" class="lang-phone-placeholder" placeholder="Номер телефона" name="phone">
                     </div>
                 </div>
                 <div class="item">
                     <div class="inp">
-                        <label for="">Пароль</label>
-                        <input type="text" placeholder="Пароль" name="password">
+                        <label for="" class="lang-password">Пароль</label>
+                        <input type="text" class="lang-password-placeholder" placeholder="Пароль" name="password">
                     </div>
                     <div class="inp">
-                        <label for="">Новый пароль</label>
-                        <input type="text" placeholder="Новый пароль" name="new_password">
+                        <label for="" class="lang-password-new">Новый пароль</label>
+                        <input type="text" class="lang-password-new-placeholder" placeholder="Новый пароль" name="new_password">
                     </div>
                 </div>
-                <button>Сохранить</button>
+                <button id="saveNewUser" class="lang-save-btn">Сохранить</button>
             </form>
         </div>
         <div class="right-side">
-            <h1>В избранном (<span>3</span>)</h1>
+            <h1 class="lang-inSaved">В избранном (<span>3</span>)</h1>
             <div class="items">
                 <div class="item">
                     <img src="" alt="">
                     <div class="text">
                         <h2>Название товара</h2>
-                        <p>Код товара: <span>12323_asldk_434</span></p>
-                        <p>Цвет: <span>Белый</span></p>
-                        <p>Категория: <span>Flex</span></p>
-                        <button>Посмотреть товар</button>
+                        <p class="lang-code">Код товара: <span>12323_asldk_434</span></p>
+                        <p class="lang-color">Цвет: <span>Белый</span></p>
+                        <p class="lang-category">Категория: <span>Flex</span></p>
+                        <button class="lang-showCarpet">Посмотреть товар</button>
                     </div>
                 </div>
                 <div class="item">
@@ -122,7 +126,8 @@
     <footer class="footer"></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
     <script src="../js/lang/profile-lang.js"></script>
-    <script src="../js/profile.js"></script>
     <script src="../js/usefulComp.js"></script>
+    <script src="../js/profile.js"></script>
 </body>
+
 </html>

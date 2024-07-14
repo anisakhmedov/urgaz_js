@@ -1,7 +1,7 @@
 let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com'
 let userId = localStorage.user
 let user = {}
-let userImg = document.querySelector('img')
+let userImg = document.querySelector('#profile-img')
 
 let getUser = () => {
     axios.get(`${api}/users/${userId}`)
@@ -78,20 +78,72 @@ let uploadNewImage = (param) => {
         })
 }
 
-let updateUser = document.getElementById('updateUser')
+let updateUser = document.getElementById('saveNewUser')
 
-updateUser.onsubmit = () => {
-    event.preventDefault()
-    let fm = new FormData(event.target)
+updateUser.onclick = () => {
+    let inpts = updateUser.parentNode.querySelectorAll('input')
 
     let obj = {}
+    for (let item of inpts) {
+        obj = {
+            name: item.getAttribute('name') == 'name' ? item.value : user.name,
+            surname: item.getAttribute('name') == 'surname' ? item.value : user.surname,
+            email: item.getAttribute('name') == 'email' ? item.value : user.email,
+            phone: item.getAttribute('name') == 'phone' ? item.value : user.phone,
+            password: item.getAttribute('name') == 'password' ? item.value : user.password,
+        }
 
-    fm.forEach((val, key) => {
-        obj[key] = val
-    })
-
-    if (obj.new_password !== '' && obj.new_password == obj.password) {
-        
+        if (item.getAttribute('name') == 'new_password') {
+            if (item.value != '') obj.password = item.value
+            else obj.password = user.password
+        }
     }
-    delete obj.new_password
+
+    axios.patch(`${api}/users/${user._id}`, obj)
+        .then((res) => getUser())
+        .catch((err) => console.error(err))
+}
+
+
+
+let changeLang = document.querySelector('.icon-lang')
+let addLang = document.querySelector('.languages')
+
+for (let item of addLang.children) {
+    console.log(item.getAttribute('class'));
+    item.onclick = () => {
+        let val = item.getAttribute('class')
+        location.href = window.location.pathname + '#' + val
+        location.reload()
+    }
+}
+const allLang = ['en', 'uz', 'ru']
+
+let changeLangFunc = () => {
+    let hash = window.location.hash
+    hash = hash.substring(1)
+    if (!allLang.includes(hash)) {
+        location.href = window.location.pathname + '#ru'
+        location.reload()
+    }
+    // select.value = hash
+    for (let item in profileLang) {
+        if (document.querySelector('.lang-' + item).getAttribute('placeholder')) {
+            document.querySelector('.lang-' + item).setAttribute('placeholder', profileLang[item][hash])
+        } else{
+            document.querySelector('.lang-' + item).innerHTML = profileLang[item][hash]
+        }
+    }
+    console.log(hash);
+    localStorage.lang = hash
+}
+
+changeLangFunc()
+
+changeLang.onclick = () => {
+    if (addLang.className.includes('active')) {
+        addLang.classList.remove('active')
+    } else {
+        addLang.classList.add('active')
+    }
 }

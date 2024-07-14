@@ -73,6 +73,44 @@ button {
             }
         }
     }
+    .icon-lang {
+        position: relative;
+        &:hover{
+            cursor: pointer;
+        }
+        .languages {
+            position: absolute;
+            display: none;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            flex-direction: column;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            overflow: hidden;
+            &.active{
+                display: flex;
+            }
+            div{
+                transition: .3s ease;
+                padding: 10px;
+                background-color: rgb(220, 9, 9);
+                height: 100%;
+                &:hover{
+                    background-color: white;
+                    color: rgb(220, 9, 9);
+                    cursor: pointer;
+                }
+                &:first-child{
+                    border-bottom: 1px solid white;
+                }
+                &:last-child{
+                    border-top: 1px solid white;
+                }
+            }
+        }
+    }
 }
 
 .footer {
@@ -656,23 +694,23 @@ button {
                     }
                 }
             }
-            form{
+            form {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
-                .inp{
+                .inp {
                     display: flex;
                     flex-direction: column;
                 }
-                .item{
+                .item {
                     display: flex;
                     gap: 20px;
-                    label{
+                    label {
                         font-weight: 600;
                         font-size: 20px;
                     }
-                    input{
+                    input {
                         width: 274px;
                         border-radius: 5px;
                         outline: none;
@@ -682,7 +720,7 @@ button {
                         padding: 17px 26px;
                     }
                 }
-                button{
+                button {
                     background-color: rgb(220, 9, 9);
                     border: none;
                     border-radius: 5px;
@@ -692,7 +730,6 @@ button {
                     width: fit-content;
                     color: white;
                 }
-
             }
         }
         .right-side {
@@ -704,12 +741,12 @@ button {
             border-radius: 13px;
             // justify-items: end;
             justify-self: end;
-            h1{
+            h1 {
                 font-size: 24px;
                 font-weight: 600;
                 margin-bottom: 7px;
             }
-            .items{
+            .items {
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-auto-rows: 140px;
@@ -726,24 +763,24 @@ button {
                     border-left: 1px solid rgb(220, 9, 9);
                     background-color: rgb(220, 9, 9);
                 }
-                .item{
+                .item {
                     display: flex;
                     align-items: center;
-                    .text{
+                    .text {
                         margin-left: 20px;
-                        h2{
+                        h2 {
                             font-size: 24px;
                             font-weight: 600;
                         }
-                        p{
+                        p {
                             font-size: 16px;
                             font-weight: 500;
                             margin-bottom: -2px;
-                            &:last-child{
+                            &:last-child {
                                 margin-bottom: 0;
                             }
                         }
-                        button{
+                        button {
                             font-size: 16px;
                             margin-top: 10px;
                             background-color: rgb(220, 9, 9);
@@ -754,7 +791,7 @@ button {
                             color: white;
                         }
                     }
-                    img{
+                    img {
                         height: 100%;
                         width: 100px;
                     }
