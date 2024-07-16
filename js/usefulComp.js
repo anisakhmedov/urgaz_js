@@ -2,28 +2,32 @@ let header = document.querySelector('.header')
 let footer = document.querySelector('.footer')
 
 let currentPage = window.location.href.split('/')[4]
-if (localStorage.enter === 'false' || !localStorage.enter) {
-    if (!currentPage.includes('register')) {
-        localStorage.enter = 'false'
-        window.location.href = window.location.href.replace(currentPage, 'register.html')
-    } else {
+if (currentPage != undefined) {
+    if (localStorage.enter === 'false' || !localStorage.enter) {
+        if (!currentPage.includes('register')) {
+            localStorage.enter = 'false'
+            window.location.href = window.location.href.replace(currentPage, 'register.html')
+        } else {
 
+        }
+    } else {
+        if (currentPage.includes('register.html')) {
+            localStorage.enter = 'true'
+            window.location.href = window.location.href.replace('register.html', 'index.html')
+        }
     }
-} else {
-    if (currentPage.includes('register.html')) {
-        localStorage.enter = 'true'
-        window.location.href = window.location.href.replace('register.html', 'index.html')
-    }
+} else{
+    window.location.href = './pages/register.html'
 }
 
 let useArrLang = usefullLang
 let correctArray;
 let hash = window.location.hash
 
-
-if (currentPage.includes('profile')) correctArray = profileLang
-else if (currentPage.includes('register')) correctArray = registerLang
-
+if (currentPage != undefined) {
+    if (currentPage.includes('profile')) correctArray = profileLang
+    else if (currentPage.includes('register')) correctArray = registerLang
+}
 let usefullHash = hash.slice(1)
 
 if (header) {
@@ -247,11 +251,13 @@ if (document.querySelector('.wrapper')) {
 let changeLang = document.querySelector('.icon-lang')
 let addLang = document.querySelector('.languages')
 
-for (let item of addLang.children) {
-    item.onclick = () => {
-        let val = item.getAttribute('class')
-        location.href = window.location.pathname + '#' + val
-        location.reload()
+if (addLang != null) {
+    for (let item of addLang.children) {
+        item.onclick = () => {
+            let val = item.getAttribute('class')
+            location.href = window.location.pathname + '#' + val
+            location.reload()
+        }
     }
 }
 const allLang = ['en', 'uz', 'ru']
@@ -278,23 +284,28 @@ let changeLangFunc = () => {
 
 changeLangFunc()
 
-changeLang.onclick = () => {
-    if (addLang.className.includes('active')) {
-        addLang.classList.remove('active')
-    } else {
-        addLang.classList.add('active')
+if (changeLang != null) {
+    changeLang.onclick = () => {
+        if (addLang.className.includes('active')) {
+            addLang.classList.remove('active')
+        } else {
+            addLang.classList.add('active')
+        }
     }
 }
 
 let menu = document.querySelector('.menu')
 
-menu.onclick = () => {
-    let menu_act = document.querySelector('.menu-header')
-    if(menu_act.classList.contains('active')){
-        menu_act.classList.remove('active')
-        document.body.style.overflow = 'scroll'
-    } else{
-        document.body.style.overflow = 'hidden'
-        menu_act.classList.add('active')
+if (menu != undefined) {
+
+    menu.onclick = () => {
+        let menu_act = document.querySelector('.menu-header')
+        if (menu_act.classList.contains('active')) {
+            menu_act.classList.remove('active')
+            document.body.style.overflow = 'scroll'
+        } else {
+            document.body.style.overflow = 'hidden'
+            menu_act.classList.add('active')
+        }
     }
 }
