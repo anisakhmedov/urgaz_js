@@ -363,12 +363,15 @@
     .lang-title-reg {
         font-size: 36px !important;
     }
-    #login form {
-        p{
-            margin-top: 0 !important;
-        }
-        input {
-            height: 50px;
+    #login {
+        height: 100vh;
+        form {
+            p {
+                margin-top: 0 !important;
+            }
+            input {
+                height: 50px;
+            }
         }
     }
 }
