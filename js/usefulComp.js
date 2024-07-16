@@ -249,12 +249,14 @@ if (document.querySelector('.wrapper')) {
 }
 
 let changeLang = document.querySelector('.icon-lang')
-let addLang = document.querySelector('.languages')
+let addLang = document.querySelectorAll('.change-lan-lan')
 
 if (addLang != null) {
-    for (let item of addLang.children) {
+    for (let item of addLang) {
         item.onclick = () => {
-            let val = item.getAttribute('class')
+            console.log(item);
+            let val = item.getAttribute('class').split(' ')[1]
+            console.log(val);
             location.href = window.location.pathname + '#' + val
             location.reload()
         }
