@@ -110,7 +110,7 @@
             // transform: translateX(-100%);
             height: 0%;
             overflow: hidden;
-            h1{
+            h1 {
                 display: none;
             }
             &.active {
@@ -139,7 +139,7 @@
 }
 
 @media only screen and (max-width: 1350px) {
-    .menu-header{
+    .menu-header {
         top: 98px !important;
     }
     #profile-page {
@@ -203,6 +203,9 @@
     }
     .left-side .filter .blocks .item p {
         font-size: 16px !important;
+    }
+    #login form {
+        width: 400px;
     }
 }
 
@@ -354,7 +357,18 @@
             }
         }
     }
-    .menu-header{
+    .menu-header {
         top: 80px !important;
+    }
+    .lang-title-reg {
+        font-size: 36px !important;
+    }
+    #login form {
+        p{
+            margin-top: 0 !important;
+        }
+        input {
+            height: 50px;
+        }
     }
 }
