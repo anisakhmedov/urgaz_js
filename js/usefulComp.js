@@ -285,3 +285,16 @@ changeLang.onclick = () => {
         addLang.classList.add('active')
     }
 }
+
+let menu = document.querySelector('.menu')
+
+menu.onclick = () => {
+    let menu_act = document.querySelector('.menu-header')
+    if(menu_act.classList.contains('active')){
+        menu_act.classList.remove('active')
+        document.body.style.overflow = 'scroll'
+    } else{
+        document.body.style.overflow = 'hidden'
+        menu_act.classList.add('active')
+    }
+}

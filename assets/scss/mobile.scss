@@ -135,7 +135,43 @@
     }
 }
 
+@media only screen and (max-width: 1350px) {
+    #profile-page {
+        .container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .left-side {
+            display: none !important;
+        }
+    }
+}
+
 @media only screen and (max-width: 950px) {
+    #profile-page {
+        .container{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+        input {
+            width: 200px !important;
+            padding: 12px 26px !important;
+        }
+        #profile-page .container .mid-side .image-div img {
+            width: 120px !important;
+        }
+        .btns {
+            flex-direction: column;
+        }
+        form {
+            font-size: 18px !important;
+            padding: 12px 30px !important;
+        }
+        .right-side{
+            height: fit-content !important;
+            .items {
+                height: fit-content !important;
+            }
+        }
+    }
     .header {
         .nav-text,
         .nav-icons {
@@ -238,12 +274,17 @@
 
 @media only screen and (max-width: 550px) {
     .footer {
-        .logo-back{
-            img{
+        .logo {
+            img {
+                width: 80%;
+            }
+        }
+        .logo-back {
+            img {
                 height: 50% !important;
             }
         }
-         nav {
+        nav {
             display: grid;
             grid-template-columns: repeat(2, 1fr) !important;
             // flex-direction: column;
@@ -253,19 +294,59 @@
             }
         }
     }
-    .filter-block{
+    .header {
+        height: fit-content;
+        box-shadow: 0 -5px 32px #00000025;
+        padding: 20px 20px;
+        .logo {
+            img {
+                height: 40px;
+            }
+        }
+    }
+    ._margin {
+        height: 100px;
+    }
+    .filter-block {
         gap: 10px !important;
-        .search-inp, .filtr-inp{
+        margin: 10px 0;
+        .search-inp,
+        .filtr-inp {
             width: 95% !important;
-            .show, .search{
+            .show,
+            .search {
                 width: 100% !important;
             }
         }
-        .show{
+        .show {
             justify-items: end;
         }
-        .filtr-inp{
+        .filtr-inp {
             justify-items: end;
+        }
+    }
+
+    #profile-page{
+        #updateUser{
+            padding: 0 !important;
+            width: 100%;
+            button{
+                font-size: 18px;
+                padding: 10px 25px;
+            }
+            .item{
+                width: 100% !important;
+                label{
+                    font-size: 16px !important;
+                }
+                .inp{
+                    width: 100% !important;
+                    input{
+                        width: 100% !important;
+                        padding: 12px 15px !important;
+                    }
+                }
+            }
         }
     }
 }

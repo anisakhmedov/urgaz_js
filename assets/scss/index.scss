@@ -111,7 +111,7 @@ button {
             }
         }
     }
-    .menu{
+    .menu {
         display: none;
     }
 }
@@ -133,7 +133,7 @@ button {
         grid-template-columns: repeat(3, 1fr);
         justify-content: center;
         z-index: 2;
-        &:first-child{
+        &:first-child {
             align-items: center;
         }
     }
@@ -189,19 +189,76 @@ button {
     }
 }
 
+.menu-header {
+    position: fixed;
+    top: 80px;
+    transform: translateX(-110%);
+    transition: .3s ease;
+    &.active{
+        transform: translateX(0%);
+    }
+    box-shadow: 0 -10px 42px #00000025 inset;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    z-index: 100;
+    padding: 20px;
+    height: calc(100vh - 80px);
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+        a {
+            font-weight: 600;
+            color: rgb(220, 9, 9);
+            font-size: 36px !important;
+            display: flex;
+            gap: 20px;
+        }
+        .languages {
+            display: flex;
+            width: fit-content;
+            align-items: end;
+            color: white;
+            font-weight: 600;
+            overflow: hidden;
+            height: 100%;
+            div {
+                background-color: rgb(220, 9, 9);
+                height: fit-content;
+                padding: 10px 20px;
+                font-size: 24px;
+                &:first-child {
+                    border-bottom-left-radius: 10px;
+                    border-top-left-radius: 10px;
+                    border-right: 1px solid white;
+                }
+                &:last-child {
+                    border-bottom-right-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border-left: 1px solid white;
+                }
+            }
+        }
+    }
+}
+
 #catalogue {
     position: relative;
     display: flex;
-    .open-filter{
+    
+    .open-filter {
         width: 100%;
         // display: none;
         gap: 10px;
         justify-content: end;
         margin-bottom: 20px;
-        &:hover{
+        &:hover {
             cursor: pointer;
         }
-        p{
+        p {
             font-weight: 600;
             font-size: 20px;
         }
@@ -326,9 +383,9 @@ button {
                 display: flex;
                 flex-direction: column;
                 gap: 7px;
-                form{
+                form {
                     display: flex;
-                    input{
+                    input {
                         width: 50%;
                     }
                 }
@@ -708,8 +765,9 @@ button {
         margin: 0 auto;
         justify-content: space-between;
         grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
         .left-side {
-            width: 450px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             border: 2px solid rgb(220, 9, 9);
@@ -795,7 +853,7 @@ button {
             padding: 26px;
             overflow: hidden;
             height: 550px;
-            width: 450px;
+            width: 100%;
             border-radius: 13px;
             // justify-items: end;
             justify-self: end;
