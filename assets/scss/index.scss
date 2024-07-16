@@ -12,7 +12,7 @@
 body {
     min-height: 100vh;
     &::-webkit-scrollbar {
-        width: 10px;
+        width: 7px;
     }
     &::-webkit-scrollbar-track {
         background: white;
@@ -113,6 +113,10 @@ button {
     }
     .menu {
         display: none;
+        width: 30px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 
@@ -251,7 +255,7 @@ button {
     
     .open-filter {
         width: 100%;
-        // display: none;
+        display: none;
         gap: 10px;
         justify-content: end;
         margin-bottom: 20px;
