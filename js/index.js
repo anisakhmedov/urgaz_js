@@ -16,14 +16,6 @@ let obj_search = {
     }
 }
 
-// if (localStorage.enter === 'false' || !localStorage.enter) {
-//     window.location.href = window.location.href.replace('index.html', 'register.html')
-//     localStorage.enter = 'false'
-// } else {
-//     window.location.href = window.location.href.replace('register.html', 'index.html')
-//     localStorage.enter = 'true'
-// }
-
 for (let item of colors_choose.children) {
     item.onclick = () => {
         obj_search.colors = [...new Set(obj_search.colors)]
@@ -82,3 +74,12 @@ find_filter.addEventListener('click', () => {
     obj_search.width.from = width_filter.children[0].value
     obj_search.width.to = width_filter.children[1].value
 });
+
+let showFilter = document.querySelector('.open-filter')
+let leftSide = document.querySelector('.left-side')
+
+showFilter.onclick = () => {
+    if (!leftSide.classList.contains('active')) leftSide.classList.add('active')
+    else leftSide.classList.remove('active')
+
+}

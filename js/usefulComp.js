@@ -61,6 +61,9 @@ if (header) {
                 <img src="../assets/img/icons/contact.svg" alt="">
             </a>
         </nav>
+        <div class="menu">
+            <img src="../assets/img/icons/main-menu.svg">
+        </div>
 `
 }
 
@@ -97,40 +100,6 @@ if (footer) {
                         <a href="/liked">
                             ${useArrLang.save_footer[hash.slice(1)]}
                         </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="catalogue">
-                <ul>
-                    <label for="">Каталог</label>
-                    <li>
-                        <a href="/">Каталог</a>
-                    </li>
-                    <li>
-                        <a href="/">Каталог</a>
-                    </li>
-                    <li>
-                        <a href="/">Каталог</a>
-                    </li>
-                    <li>
-                        <a href="/">Каталог</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="rooms">
-                <ul>
-                    <label for="">Комнаты</label>
-                    <li>
-                        <a href="/room">Комнаты</a>
-                    </li>
-                    <li>
-                        <a href="/room">Комнаты</a>
-                    </li>
-                    <li>
-                        <a href="/room">Комнаты</a>
-                    </li>
-                    <li>
-                        <a href="/room">Комнаты</a>
                     </li>
                 </ul>
             </div>

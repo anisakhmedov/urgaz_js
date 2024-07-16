@@ -1,0 +1,271 @@
+@media only screen and (max-width: 1450px) {
+    #catalogue {
+        .left-side {
+            button {
+                margin-top: 15px;
+                height: 35px;
+            }
+            .color {
+                .item {
+                    width: 45px !important;
+                    height: 45px !important;
+                }
+            }
+            .filter {
+                form {
+                    display: flex;
+                    width: 100%;
+                    input {
+                        width: 50%;
+                    }
+                }
+                label {
+                    font-size: 18px;
+                    margin: 15px 0 10px 0;
+                }
+                .blocks {
+                    grid-auto-rows: 35px;
+                    .item {
+                        p {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        .right-side {
+            padding-left: 23px;
+            .main-side {
+                .filter-block {
+                    margin: 15px 0;
+                    .show {
+                        height: 48px !important;
+                    }
+                    .search-inp {
+                        img {
+                            top: 14px;
+                        }
+                        input {
+                            height: 48px;
+                        }
+                    }
+                }
+                .wrapper {
+                    .carpet {
+                        .discription {
+                            p {
+                                font-size: 20px;
+                            }
+                        }
+                        .img {
+                            position: relative;
+                            height: 190px;
+                            .top {
+                                div {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    #catalogue .right-side .main-side .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .header {
+        padding: 25px 45px;
+        .nav-text {
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+    #catalogue {
+        display: block;
+        .right-side {
+            padding-left: 0;
+            // margin-top: 20px;
+            .banner {
+                display: none;
+            }
+        }
+        .open-filter {
+            display: flex;
+        }
+        .left-side {
+            // width: 300px !important;
+            // position: absolute;
+            // display: none;
+            transition: 0.3s ease;
+            height: fit-content;
+            width: 100%;
+            display: none;
+            // left: -90%;
+            // width: auto;
+            // transform: translateX(-100%);
+            &.active {
+                display: block;
+            }
+        }
+    }
+    #catalogue .right-side .main-side .banner {
+        label {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+        }
+        padding: 30px 45px;
+        p {
+            font-size: 22px;
+        }
+        .title {
+            font-size: 36px;
+        }
+    }
+    .footer {
+        padding: 70px 30px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .header {
+        .nav-text,
+        .nav-icons {
+            display: none !important;
+        }
+
+        .menu {
+            display: block;
+        }
+    }
+    .left-side .filter .blocks .item p {
+        font-size: 16px !important;
+    }
+    #catalogue .left-side .color .item {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    #catalogue .left-side button {
+        height: 45px;
+        p {
+            font-size: 18px;
+        }
+    }
+    .left-side .filter .blocks .item p {
+        font-size: 16px !important;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #catalogue .right-side .main-side {
+        .wrapper {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .filter-block {
+            .filtr-inp {
+                .show {
+                    height: 35px !important;
+                    border-radius: 10px;
+                    width: 200px;
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
+            .search-inp {
+                input {
+                    height: 35px;
+                    padding: 0 15px 0 35px;
+                    border-radius: 10px;
+                    width: 200px;
+                    font-size: 16px;
+                }
+                img {
+                    width: 15px;
+                    top: 10px;
+                    left: 12px;
+                }
+            }
+            .show {
+                height: 48px !important;
+            }
+        }
+    }
+    ._margin {
+        height: 120px;
+    }
+    .container {
+        padding: 0 20px;
+    }
+    .header {
+        height: fit-content;
+        padding: 20px 45px;
+    }
+    #catalogue .open-filter {
+        width: 100%;
+        gap: 10px;
+        justify-content: end;
+        margin-bottom: 10px;
+    }
+    .footer {
+        padding: 30px 30px;
+        overflow: hidden;
+        .logo-back {
+            img {
+                height: 100% !important;
+            }
+        }
+        ul {
+            gap: 7px !important;
+            label {
+                font-size: 24px !important;
+            }
+            a,
+            p {
+                font-size: 14px !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .footer {
+        .logo-back{
+            img{
+                height: 50% !important;
+            }
+        }
+         nav {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) !important;
+            // flex-direction: column;
+            .logo {
+                grid-column: span 2;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .filter-block{
+        gap: 10px !important;
+        .search-inp, .filtr-inp{
+            width: 95% !important;
+            .show, .search{
+                width: 100% !important;
+            }
+        }
+        .show{
+            justify-items: end;
+        }
+        .filtr-inp{
+            justify-items: end;
+        }
+    }
+}
