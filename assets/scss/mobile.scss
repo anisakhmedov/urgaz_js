@@ -161,8 +161,9 @@
             width: 200px !important;
             padding: 12px 26px !important;
         }
-        #profile-page .container .mid-side .image-div img {
+        .container .mid-side .image-div #profile-img {
             width: 120px !important;
+            height: 120px !important;
         }
         .btns {
             flex-direction: column;
@@ -389,6 +390,25 @@
         }
         .lang-title-reg {
             font-size: 30px !important;
+        }
+    }
+    #profile-page {
+        .mid-side form .item {
+            display: flex;
+            gap: 10px;
+        }
+        .right-side {
+            .items {
+                .item {
+                    h2 {
+                        font-size: 18px !important;
+                    }
+                    button {
+                        font-size: 12px;
+                        padding: 5px 10px;
+                    }
+                }
+            }
         }
     }
 }

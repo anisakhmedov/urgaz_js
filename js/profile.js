@@ -7,7 +7,7 @@ let getUser = () => {
     axios.get(`${api}/users/${userId}`)
         .then((res) => {
             user = res.data
-            userImg.src = `${api}/${user.image}`
+            userImg.style.backgroundImage = `url(${api}/${user.image})`
             loadData(user)
         })
         .catch((err) => console.error(err))
@@ -103,40 +103,3 @@ updateUser.onclick = () => {
         .then((res) => getUser())
         .catch((err) => console.error(err))
 }
-
-
-
-// let changeLang = document.querySelector('.icon-lang')
-// let addLang = document.querySelector('.languages')
-
-// for (let item of addLang.children) {
-//     console.log(item.getAttribute('class'));
-//     item.onclick = () => {
-//         let val = item.getAttribute('class')
-//         location.href = window.location.pathname + '#' + val
-//         location.reload()
-//     }
-// }
-// const allLang = ['en', 'uz', 'ru']
-
-// let changeLangFunc = () => {
-//     let hash = window.location.hash
-//     hash = hash.substring(1)
-//     if (!allLang.includes(hash)) {
-//         location.href = window.location.pathname + '#ru'
-//         location.reload()
-//     }
-//     // select.value = hash
-//     for (let item in profileLang) {
-//         if (document.querySelector('.lang-' + item).getAttribute('placeholder')) {
-//             document.querySelector('.lang-' + item).setAttribute('placeholder', profileLang[item][hash])
-//         } else{
-//             document.querySelector('.lang-' + item).innerHTML = profileLang[item][hash]
-//         }
-//     }
-//     console.log(hash);
-//     localStorage.lang = hash
-// }
-
-// changeLangFunc()
-

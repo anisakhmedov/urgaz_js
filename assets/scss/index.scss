@@ -201,7 +201,7 @@ button {
     &.active{
         transform: translateX(0%);
     }
-    box-shadow: 0 -10px 42px #00000025 inset;
+    box-shadow: 0px 62px 51px -57px rgba(0, 0, 0, 0.10) inset;
     left: 0;
     bottom: 0;
     right: 0;
@@ -792,9 +792,11 @@ button {
                 display: flex;
                 align-items: center;
                 margin-bottom: 20px;
-                img {
+                #profile-img {
                     width: 145px;
                     height: 145px;
+                    background-size: cover;
+                    background-position: center;
                     border-radius: 50%;
                     margin-right: 37px;
                 }
