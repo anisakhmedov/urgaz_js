@@ -1,7 +1,8 @@
 let header = document.querySelector('.header')
 let footer = document.querySelector('.footer')
-
+let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com'
 let currentPage = window.location.href.split('/')[4]
+
 if (currentPage != undefined) {
     if (localStorage.enter === 'false' || !localStorage.enter) {
         if (!currentPage.includes('register')) {
@@ -16,9 +17,10 @@ if (currentPage != undefined) {
             window.location.href = window.location.href.replace('register.html', 'index.html')
         }
     }
-} else{
+} else {
     window.location.href = './pages/register.html'
 }
+// uploadAllCarpets()
 
 let useArrLang = usefullLang
 let correctArray;
@@ -137,116 +139,51 @@ if (footer) {
         </nav>`
 }
 
-let db = [
-    {
-        title: 'title14',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title21',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title34',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title41',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title51',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title66',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title73',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title83',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title91',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title150',
-        colors: ['red', 'green', 'blue']
-    },
-    {
-        title: 'title111',
-        colors: ['red', 'green', 'blue'],
-    }
-]
+// let uploadData = (param) => {
+//     for (let item of showData) {
+//         item.id = Math.random().toString().slice(2, 4)
+//         let mainItem = document.createElement('div');
+//         mainItem.innerHTML = `<div class="carpet" id="${item.id}">
+//         <div class="img">
+//         <img src="../assets/img/test.jpg" alt="">
+//         <div class="top">
+//         <div class="show">
+//         <img src="../assets/img/icons/eye.svg" alt="">
+//         </div>
+//         <div class="star">
+//         <img src="../assets/img/icons/star-white.svg" alt="">
+//         </div>
+//         </div>
+//         <div class="bottom">
+//         <p>${item.title_ru}</p>
+//         </div>
+//         </div>
+//         <div class="discription">
+//         <p>Доступные цвета</p>
+//         <div class="colors">
 
-let btn = document.getElementById('showMore');
-let numCut = 6
-let showData = db.splice(0, numCut)
+//         </div>
+//         <div class="disc">
+//         <div class="width">
+//         <p>Ширина</p>
+//         <span>4 метра</span>
+//         </div>
+//         <div class="height">
+//         <p>Общая высота</p>
+//         <span>7,8 мм</span>
+//         </div>
+//         </div>
+//         </div>
+//         <div class="btn">
+//         <a href="/">
+//         Подробная информация
+//         </a>
+//         </div>
+//         </div>`
 
-if (document.querySelector('.wrapper')) {
-    let wrapper = document.querySelector('.wrapper')
-
-    let uploadData = () => {
-        for (let item of showData) {
-            item.id = Math.random().toString().slice(2, 4)
-            let mainItem = document.createElement('div');
-
-            mainItem.innerHTML = `<div class="carpet" id="${item.id}">
-        <div class="img">
-        <img src="../assets/img/test.jpg" alt="">
-        <div class="top">
-        <div class="show">
-        <img src="../assets/img/icons/eye.svg" alt="">
-        </div>
-        <div class="star">
-        <img src="../assets/img/icons/star-white.svg" alt="">
-        </div>
-        </div>
-        <div class="bottom">
-        <p>${item.title}</p>
-        </div>
-        </div>
-        <div class="discription">
-        <p>Доступные цвета</p>
-        <div class="colors">
-        
-        </div>
-        <div class="disc">
-        <div class="width">
-        <p>Ширина</p>
-        <span>4 метра</span>
-        </div>
-        <div class="height">
-        <p>Общая высота</p>
-        <span>7,8 мм</span>
-        </div>
-        </div>
-        </div>
-        <div class="btn">
-        <a href="/">
-        Подробная информация
-        </a>
-        </div>
-        </div>`
-
-            wrapper.append(mainItem)
-        }
-    }
-    uploadData()
-    btn.onclick = () => {
-        numCut += numCut
-        showData = db.splice(0, numCut)
-        uploadData()
-        if (numCut >= showData.length) {
-            btn.style.display = 'none'
-        }
-    }
-}
+//         wrapper.append(mainItem)
+//     }
+// }
 
 let changeLang = document.querySelector('.icon-lang')
 let addLang = document.querySelectorAll('.change-lan-lan')
@@ -288,10 +225,10 @@ changeLangFunc()
 
 if (changeLang != null) {
     changeLang.onclick = () => {
-        if (addLang.className.includes('active')) {
-            addLang.classList.remove('active')
+        if (document.querySelector('.languages').className.includes('active')) {
+            document.querySelector('.languages').classList.remove('active')
         } else {
-            addLang.classList.add('active')
+            document.querySelector('.languages').classList.add('active')
         }
     }
 }

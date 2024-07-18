@@ -1,18 +1,7 @@
-// const langArr = lang
-// const allLang = ['en', 'uz', 'ru']
-
 let allUsers = []
-let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com/users'
-
-// if (localStorage.enter === 'true') {
-//     window.location.href = window.location.href.replace('register.html', 'index.html')
-//     localStorage.enter = 'true'
-// } else {
-//     localStorage.enter = false
-// }
 
 let getUsers = () => {
-    axios.get(api)
+    axios.get(api + '/users')
         .then((response) => {
             allUsers = response.data
         })
@@ -21,33 +10,6 @@ let getUsers = () => {
         })
 }
 getUsers()
-
-// let select = document.querySelector('select');
-// let changeLanguage = () => {
-//     let val = select.value
-//     location.href = window.location.pathname + '#' + val
-//     location.reload()
-// }
-
-// let chengedLanguage = () => {
-//     let hash = window.location.hash
-//     hash = hash.substring(1)
-//     if (!allLang.includes(hash)) {
-//         location.href = window.location.pathname + '#ru'
-//         location.reload()
-//     }
-//     select.value = hash
-//     for (let item in langArr) {
-//         document.querySelector('.lang-' + item).innerHTML = langArr[item][hash]
-//         if (document.querySelector('.lang-' + item).getAttribute('placeholder')) {
-//             document.querySelector('.lang-' + item).setAttribute('placeholder', langArr[item][hash])
-//         }
-//     }
-// }
-// chengedLanguage()
-
-// select.addEventListener('change', changeLanguage);
-
 
 let regBtn = document.querySelector('#changeFormReg')
 let entBtn = document.querySelector('#changeFormEnt')
@@ -87,7 +49,7 @@ regForm.onsubmit = () => {
                 // console.log(item);
             } else if (!item.email.includes(obj.email) && !item.phone.includes(obj.phone)) {
                 document.querySelector('#incorrect-phone').classList.remove('active')
-                axios.post(api, obj)
+                axios.post(api + '/users', obj)
                     .then((response) => {
                         localStorage.user = response.data._id
                         window.location.href = window.location.href.replace('register.html', 'index.html')

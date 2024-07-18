@@ -1,4 +1,3 @@
-let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com'
 let userId = localStorage.user
 let user = {}
 let userImg = document.querySelector('#profile-img')
