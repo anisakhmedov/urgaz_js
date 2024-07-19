@@ -1,5 +1,5 @@
 let lang = {
-    "title": {
+    "cat-filter": {
         "ru": "",
         "en": "",
         "uz": ""

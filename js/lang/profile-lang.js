@@ -69,26 +69,6 @@ let profileLang = {
         "en": "In favorites",
         "uz": "Sevimlilar",
     },
-    "code": {
-        "ru": "Код товара",
-        "en": "Product code",
-        "uz": "Mahsulot kodi",
-    },
-    "color": {
-        "ru": "Цвет",
-        "en": "Colour",
-        "uz": "Rang",
-    },
-    "category": {
-        "ru": "Категория",
-        "en": "Category",
-        "uz": "Kategoriya",
-    },
-    "showCarpet": {
-        "ru": "Показать товар",
-        "en": "Show the product",
-        "uz": "Mahsulotni ko'rsatish",
-    },
     "name-placeholder": {
         "ru": "Имя",
         "en": "First Name",

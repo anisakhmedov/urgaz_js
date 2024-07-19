@@ -1,6 +1,16 @@
 let userId = localStorage.user
 let user = {}
 let userImg = document.querySelector('#profile-img')
+let arrCarpets = []
+
+let UploadCarpets = () => {
+    axios.get(api + '/carpets')
+        .then((res) => {
+            arrCarpets = res.data
+        })
+        .catch((err) => console.error(err))
+}
+UploadCarpets()
 
 let getUser = () => {
     axios.get(`${api}/users/${userId}`)
@@ -100,5 +110,77 @@ updateUser.onclick = () => {
 
     axios.patch(`${api}/users/${user._id}`, obj)
         .then((res) => getUser())
+        .catch((err) => console.error(err))
+}
+
+let showCart = () => {
+    axios.get(`${api}/users/${localStorage.user}`)
+        .then((res) => {
+            carpet = res.data.codeCarpets
+            loadCarpet(new Set(carpet.split(', ')), arrCarpets)
+        })
+        .catch((err) => console.error(err))
+
+}
+
+showCart()
+
+let loadCarpet = (param, arr) => {
+    let correctCarpet = []
+    let correctTaft = []
+    for (let carpet of param) {
+        for (let item of arrCarpets) {
+            for (let imageCarpet of item.image_carpet) {
+                if (carpet == imageCarpet.image_carpet.split('-')[1].split('.')[0]) {
+                    correctCarpet.push(imageCarpet.image_carpet)
+                }
+            }
+            for (let imageTaft of item.image_taft) {
+                if (carpet == imageTaft.image_taft.split('-')[1].split('.')[0]) {
+                    correctTaft.push(imageTaft.image_taft)
+                }
+            }
+        }
+    }
+
+    let items = document.querySelector('.items')
+    items.innerHTML = ''
+    for (let val of correctTaft) {
+        let div = document.createElement('div')
+        div.classList.add('item')
+        for (let item of arr) {
+            div.id = item._id
+            div.innerHTML = `
+            <img src="${api}/${val}" alt="">
+            <div class="text">
+                <h2>${item.title}</h2>
+                <p class="code">Вес: <span>${item.weight}</span></p>
+                <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
+                <p class="category">Ворс: <span>${item.vorse}</span></p>
+                <div class="actions">
+                    <button class="showCarpet">Посмотреть товар</button>
+                    <p onclick="removeCarpetUser()">Удалить</p>
+                </div>
+            </div>
+            `
+        }
+        items.append(div)
+    }
+}
+
+let removeCarpetUser = () => {
+    let removeCarpet = event.target.parentNode.parentNode.parentNode.querySelector('img').src.split('-')[3].split('.')[0]
+
+    let objRemove = user.codeCarpets.replace(removeCarpet, '')
+
+    if (objRemove[0] == ',') objRemove = objRemove.replace(', ', '')
+
+    user.codeCarpets = objRemove
+
+    axios.patch(`${api}/users/${localStorage.user}`, user)
+        .then((res) => {
+            console.log(res);
+            showCart()
+        })
         .catch((err) => console.error(err))
 }
