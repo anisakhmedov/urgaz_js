@@ -58,9 +58,9 @@ if (header) {
             <div class="icon-lang">
                 <img src="../assets/img/icons/language.svg" alt="">
                 <div class="languages">
-                    <div class="ru">RUS</div>
-                    <div class="en">ENG</div>
-                    <div class="uz">UZB</div>
+                    <div class="change-lan-lan ru">RUS</div>
+                    <div class="change-lan-lan en">ENG</div>
+                    <div class="change-lan-lan uz">UZB</div>
                 </div>
             </div>
             <a href="profile.html">
@@ -193,11 +193,18 @@ if (addLang != null) {
         item.onclick = () => {
             console.log(item);
             let val = item.getAttribute('class').split(' ')[1]
-            console.log(val);
-            location.href = window.location.pathname + '#' + val
+            if (location.href.includes('id')) {
+                let productIdNow = window.location.href.split('?')[1].split('#')[0]
+                // console.log();
+                location.href = `${window.location.pathname}?${productIdNow}#${val}`
+            } else{
+                location.href = window.location.pathname + '#' + val
+            }
             location.reload()
         }
     }
+} else {
+    console.log(addLang);
 }
 const allLang = ['en', 'uz', 'ru']
 
@@ -205,6 +212,7 @@ const allLang = ['en', 'uz', 'ru']
 let changeLangFunc = () => {
     hash = hash.substring(1)
     if (!allLang.includes(hash)) {
+
         if (!localStorage.lang) location.href = window.location.pathname + '#ru'
         else if (localStorage.lang) location.href = window.location.pathname + '#' + localStorage.lang
         location.reload()

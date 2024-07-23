@@ -621,7 +621,6 @@ button {
                 justify-content: space-between;
                 width: 100%;
                 gap: 20px;
-                height: 900px;
                 overflow-y: scroll;
                 &::-webkit-scrollbar {
                     width: 0px;
@@ -667,12 +666,13 @@ button {
                             left: 15px;
                             z-index: 2;
                             // box-shadow: 2px -2px 4px #00000025;
-                            
+
                             p {
                                 color: white;
                                 // box-shadow: 2px -2px 4px #0000009c;
                                 font-size: 56px;
                                 font-weight: 600;
+                                line-height: 50px;
                             }
                         }
                     }
@@ -693,7 +693,7 @@ button {
                             overflow: hidden;
                             width: 100%;
                             height: 250px;
-                            img{
+                            img {
                                 max-height: 122px;
                             }
                             // span {
@@ -731,7 +731,7 @@ button {
                         border-top-left-radius: 0px;
                         border-top-right-radius: 0px;
                         background-color: rgb(220, 9, 9);
-                        a {
+                        p {
                             color: white;
                             font-weight: 600;
                             font-size: 18px;
@@ -1050,3 +1050,110 @@ button {
         }
     }
 }
+
+#product-page {
+    .container {
+        overflow: hidden;
+        .main-carousel {
+            width: 100%;
+            img {
+                height: 700px;
+                object-fit: cover;
+                object-position: bottom;
+                width: 100%;
+            }
+        }
+        .thumbnails {
+            overflow-x: scroll;
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            img {
+                &.active {
+                    border: 3px solid rgb(220, 9, 9);
+                }
+                &:hover{
+                    cursor: pointer;
+                }
+                height: 150px;
+                object-fit: cover;
+            }
+        }
+        .info {
+            display: flex;
+            margin-top: 20px;
+            flex-direction: column;
+            gap: 7px;
+            p {
+                font-size: 24px;
+                font-weight: 600;
+                &:first-child {
+                    color: #a0a0a0;
+                    margin-bottom: -10px;
+                }
+            }
+            h2 {
+                font-size: 48px;
+            }
+            button {
+                font-size: 20px;
+                padding: 12px 30px;
+                border: none;
+                margin-top: 10px;
+                width: fit-content;
+                color: white;
+                border-radius: 10px;
+                font-weight: 600;
+                background-color: rgb(220, 9, 9);
+                position: relative;
+                overflow: hidden;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: -10px;
+                    bottom: 0;
+                    top: 0;
+                    max-height: 100%;
+                    height: 100%;
+                    max-width: 43px;
+                    width: 100%;
+                    filter: brightness(0) invert(1);
+                    opacity: 40%;
+                    background-image: url(../img/logo/back-footer.png);
+                    background-size: cover;
+                    background-position: center;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    right: -10px;
+                    bottom: 0;
+                    top: 0;
+                    max-height: 100%;
+                    height: 100%;
+                    max-width: 43px;
+                    width: 100%;
+                    filter: brightness(0) invert(1);
+                    opacity: 40%;
+                    transform: rotate(180deg);
+                    background-image: url(../img/logo/back-footer.png);
+                    background-size: cover;
+                    background-position: center;
+                }
+            }
+        }
+    }
+}
+
+// <div class="info">
+//      <p>Категория: Ковер</p>
+//      <h2>Название: Unbeatable Prices</h2>
+//      <p>Количество пучков: 504 000 m2</p>
+//      <p>Вес: 2800 (+/-7%) m2</p>
+//      <p>Ворс: 100% ПП</p>
+//      <p>В наличии: 8</p>
+//      <button>Добавить в избранное</button>
+// </div>
