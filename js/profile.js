@@ -33,7 +33,6 @@ let loadData = (param) => {
             }
         }
     }
-    // if (item.getAttribute('name') === key) item.value = param[key]
 
     form.onsubmit = () => {
         event.preventDefault();
@@ -67,12 +66,8 @@ inputImage.onchange = () => {
 }
 
 let uploadNewImage = (param) => {
-    // console.log(param);
     let fm = new FormData()
     fm.append('image', param)
-    // user.image = param
-    // console.log(param);
-    // console.log(user);
     axios.patch(`${api}/users/${user._id}`, fm, {
         headers: {
             'Content-Type': 'multipart/form-data'

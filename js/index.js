@@ -64,7 +64,6 @@ let showData = (param) => {
         let link = document.createElement('p')
 
         button.onclick = () => {
-            // console.log(usefullHash);
              window.location.href = `product.html?id=${item._id}#${usefullHash}`
         }
 
@@ -117,9 +116,6 @@ let showData = (param) => {
         mainDivImgStarShow.onclick = () => {
             let correceCarpet = item.image_taft[0].image_taft.split('-')[1].split('.')[0]
             addInCart(correceCarpet)
-
-            // console.log(item.image_taft[0].image_taft.split('-')[1].split('.')[0]);
-            // console.log(item.image_carpet[0].image_carpet.split('-')[1].split('.')[0]);
         }
     }
 }

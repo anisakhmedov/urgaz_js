@@ -46,7 +46,6 @@ regForm.onsubmit = () => {
                 document.querySelector('#incorrect-email').classList.remove('active')
                 document.querySelector('#incorrect-phone').classList.add('active')
                 break
-                // console.log(item);
             } else if (!item.email.includes(obj.email) && !item.phone.includes(obj.phone)) {
                 document.querySelector('#incorrect-phone').classList.remove('active')
                 axios.post(api + '/users', obj)

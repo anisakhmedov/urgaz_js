@@ -20,7 +20,6 @@ if (currentPage != undefined) {
 } else {
     window.location.href = './pages/register.html'
 }
-// uploadAllCarpets()
 
 let useArrLang = usefullLang
 let correctArray;
@@ -139,52 +138,6 @@ if (footer) {
         </nav>`
 }
 
-// let uploadData = (param) => {
-//     for (let item of showData) {
-//         item.id = Math.random().toString().slice(2, 4)
-//         let mainItem = document.createElement('div');
-//         mainItem.innerHTML = `<div class="carpet" id="${item.id}">
-//         <div class="img">
-//         <img src="../assets/img/test.jpg" alt="">
-//         <div class="top">
-//         <div class="show">
-//         <img src="../assets/img/icons/eye.svg" alt="">
-//         </div>
-//         <div class="star">
-//         <img src="../assets/img/icons/star-white.svg" alt="">
-//         </div>
-//         </div>
-//         <div class="bottom">
-//         <p>${item.title_ru}</p>
-//         </div>
-//         </div>
-//         <div class="discription">
-//         <p>Доступные цвета</p>
-//         <div class="colors">
-
-//         </div>
-//         <div class="disc">
-//         <div class="width">
-//         <p>Ширина</p>
-//         <span>4 метра</span>
-//         </div>
-//         <div class="height">
-//         <p>Общая высота</p>
-//         <span>7,8 мм</span>
-//         </div>
-//         </div>
-//         </div>
-//         <div class="btn">
-//         <a href="/">
-//         Подробная информация
-//         </a>
-//         </div>
-//         </div>`
-
-//         wrapper.append(mainItem)
-//     }
-// }
-
 let changeLang = document.querySelector('.icon-lang')
 let addLang = document.querySelectorAll('.change-lan-lan')
 
@@ -195,7 +148,6 @@ if (addLang != null) {
             let val = item.getAttribute('class').split(' ')[1]
             if (location.href.includes('id')) {
                 let productIdNow = window.location.href.split('?')[1].split('#')[0]
-                // console.log();
                 location.href = `${window.location.pathname}?${productIdNow}#${val}`
             } else{
                 location.href = window.location.pathname + '#' + val
