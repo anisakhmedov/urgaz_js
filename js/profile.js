@@ -180,16 +180,17 @@ let removeCarpetUser = () => {
     let objRemove = user.codeCarpets.replace(removeCarpet, '')
 
     if (objRemove[0] == ',') objRemove = objRemove.replace(', ', '')
+    // objRemove = objRemove.split(',').filter(item => item.length > 2)
 
     user.codeCarpets = objRemove
 
-    console.log(objRemove);
-    // axios.patch(`${api}/users/${localStorage.user}`, user)
-    //     .then((res) => {
-    //         console.log(res);
-    //         showCart()
-    //     })
-    //     .catch((err) => console.error(err))
+    console.log(user.codeCarpets);
+    axios.patch(`${api}/users/${localStorage.user}`, user)
+        .then((res) => {
+            console.log(res);
+            showCart()
+        })
+        .catch((err) => console.error(err))
 }
 
 let openCarpet = (param) => {

@@ -128,7 +128,7 @@ if (footer) {
                         </a>
                     </li>
                     <li>
-                        <a href="mailhref:info@urgaz.com">
+                        <a href="mailto:info@urgaz.com">
                             ${useArrLang.mails_footer[hash.slice(1)]}
                             info@urgaz.com
                         </a>
