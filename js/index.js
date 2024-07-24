@@ -105,6 +105,9 @@ let showData = (param) => {
         for (let langCarpet in lang) {
             for (let langItemCarpet of document.querySelectorAll('.lang-' + langCarpet)) {
                 langItemCarpet.innerHTML = lang[langCarpet][hash]
+                if(langItemCarpet.getAttribute('placeholder')){
+                    langItemCarpet.setAttribute('placeholder', lang[langCarpet][hash])
+                }
             }
         }
         

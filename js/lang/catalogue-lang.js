@@ -1,8 +1,13 @@
 let lang = {
     "cat_filter": {
-        "ru": "",
-        "en": "",
-        "uz": ""
+        "ru": "Фильтр",
+        "en": "Filter",
+        "uz": "Filtr"
+    },
+    "cat_search": {
+        "ru": "Поиск",
+        "en": "Search",
+        "uz": "Qidiruv"
     },
     "carpet_more": {
         "ru": "Подробная информация",
