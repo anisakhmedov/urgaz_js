@@ -81,7 +81,8 @@ let showData = (param) => {
         mainDivImgTopShowImg.src = '../assets/img/icons/eye.svg'
         mainDivImgStarShowImg.src = '../assets/img/icons/star-white.svg'
         mainDivImages.src = `${api}/${item.image_taft[0].image_taft}`
-
+        
+        mainDivImages.classList.add('img-carpet')
         mainDivDiscDiscriptionWeight.classList.add('width')
         mainDivDiscDiscriptionPuchok.classList.add('height')
         mainDivDiscDiscription.classList.add('disc')

@@ -36,6 +36,9 @@
         .right-side {
             padding-left: 23px;
             .main-side {
+                button {
+                    height: 30px;
+                }
                 .filter-block {
                     margin: 15px 0;
                     .show {
@@ -52,18 +55,46 @@
                 }
                 .wrapper {
                     .carpet {
-                        .discription {
+                        .btn {
                             p {
-                                font-size: 20px;
+                                font-size: 15px;
+                            }
+                        }
+                        .discription {
+                            .disc span {
+                                font-size: 12px;
+                            }
+                            .colors {
+                                gap: 4px;
+                                margin-bottom: 6px;
+                                height: 155px;
+                                img {
+                                    max-height: 75px;
+                                }
+                            }
+                            padding: 10px !important;
+                            p {
+                                font-size: 16px;
                             }
                         }
                         .img {
                             position: relative;
-                            height: 190px;
+                            // height: 190px;
+                            height: fit-content;
+                            img {
+                                height: 150px;
+                            }
                             .top {
                                 div {
                                     width: 30px;
                                     height: 30px;
+                                }
+                            }
+                            .bottom {
+                                bottom: 20px;
+                                p {
+                                    font-size: 30px;
+                                    line-height: 30px;
                                 }
                             }
                         }
@@ -97,8 +128,16 @@
 
 @media only screen and (max-width: 1250px) {
     #catalogue .right-side .main-side .wrapper {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+        .carpet {
+            .img {
+                .img-carpet {
+                    object-fit: cover;
+                    object-position: bottom;
+                }
+            }
+        }
     }
     .header {
         padding: 25px 45px;
@@ -270,12 +309,41 @@
             flex-direction: column;
         }
     }
+    #catalogue .right-side .main-side .wrapper .carpet {
+        .img{
+            .img-carpet{
+                height: 120px;
+            }
+            .bottom{
+                p{
+                    font-size: 20px;
+                    line-height: 10px;
+                }
+            }
+        }
+        .discription {
+            .discription {
+                .disc {
+                    span {
+                        font-size: 10px;
+                    }
+                }
+                p {
+                    font-size: 16px;
+                    margin-bottom: 0;
+                }
+            }
+            .colors {
+                height: 75px;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 700px) {
     #catalogue .right-side .main-side {
         .wrapper {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         .filter-block {
             .filtr-inp {
@@ -332,26 +400,29 @@
             }
         }
         ul {
-            gap: 7px !important;
+            gap: 3px !important;
             label {
-                font-size: 24px !important;
+                font-size: 16px !important;
             }
             a,
             p {
-                font-size: 14px !important;
+                font-size: 10px !important;
             }
         }
     }
 }
 
 @media only screen and (max-width: 550px) {
+    #catalogue .right-side .main-side .wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
     .other-carpets {
         flex-direction: column;
     }
     .footer {
         .logo {
             img {
-                width: 80%;
+                width: 60%;
             }
         }
         .logo-back {
@@ -364,7 +435,7 @@
             grid-template-columns: repeat(2, 1fr) !important;
             .logo {
                 grid-column: span 2;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
         }
     }
@@ -476,12 +547,12 @@
         }
     }
     #product-page {
-        h1{
+        h1 {
             font-size: 18px !important;
         }
-        .other-carpets{
-            .img{
-                img{
+        .other-carpets {
+            .img {
+                img {
                     height: 115px !important;
                 }
             }
