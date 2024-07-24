@@ -403,13 +403,13 @@
             }
         }
         ul {
-            gap: 3px !important;
+            gap: 0px !important;
             label {
                 font-size: 16px !important;
             }
             a,
             p {
-                font-size: 10px !important;
+                font-size: 12px !important;
             }
         }
     }
@@ -424,6 +424,7 @@
     }
     .footer {
         .logo {
+            display: none;
             img {
                 width: 60% !important;
             }
