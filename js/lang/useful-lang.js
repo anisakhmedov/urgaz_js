@@ -69,4 +69,39 @@ let usefullLang = {
         "en": "Phone:",
         "uz": "Telefon:",
     },
+    "menu_main": {
+        "ru": "Главная",
+        "en": "Main",
+        "uz": "Bosh sahifa",
+    },
+    "menu_about_us": {
+        "ru": "О нас",
+        "en": "About Us",
+        "uz": "Biz haqimizda",
+    },
+    "menu_career": {
+        "ru": "Карьера",
+        "en": "Career",
+        "uz": "Karyera",
+    },
+    "menu_contacts": {
+        "ru": "Контакты",
+        "en": "Contacts",
+        "uz": "Kontaktlar",
+    },
+    "menu_saved": {
+        "ru": "Избранное",
+        "en": "Favourites",
+        "uz": "Sevimlilar",
+    },
+    "menu_profile": {
+        "ru": "Профиль",
+        "en": "Profile",
+        "uz": "Profil",
+    },
+    "menu_exit": {
+        "ru": "Выйти",
+        "en": "Log Out",
+        "uz": "Chiqish",
+    },
 }

@@ -1,5 +1,6 @@
 let header = document.querySelector('.header')
 let footer = document.querySelector('.footer')
+let menu_mob = document.querySelector('.menu-header')
 let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com'
 let currentPage = window.location.href.split('/')[4]
 
@@ -30,6 +31,44 @@ if (currentPage != undefined) {
     else if (currentPage.includes('register')) correctArray = registerLang
 }
 let usefullHash = hash.slice(1)
+
+if (menu_mob) {
+    menu_mob.innerHTML = `<nav class="nav-text">
+                <a class="lang-menu_main" href="./index.html">
+                    Главная
+                </a>
+                <a class="lang-menu_about_us" href="https://www.urgaz.com/about-us">
+                    О нас
+                </a>
+                <a class="lang-menu_career" href="https://www.urgaz.com/career">
+                    Карьера
+                </a>
+                <a class="lang-menu_contacts" href="https://www.urgaz.com/contact-us">
+                    Контакты
+                </a>
+                <a class="lang-menu_saved" href="./cart.html">
+                    <p>Избранное</p>
+                    <img src="../assets/img/icons/star.svg" alt="">
+                </a>
+                <a class="lang-menu_profile" href="./profile.html">
+                    <p>Профиль</p>
+                    <img src="../assets/img/icons/contact.svg" alt="">
+                </a>
+                <a class="lang-menu_exit" href="./register.html">
+                    <p onclick="backReload()">Выйти</p>
+                </a>
+                <div class="languages">
+                    <div class="change-lan-lan ru">RUS</div>
+                    <div class="change-lan-lan en">ENG</div>
+                    <div class="change-lan-lan uz">UZB</div>
+                </div>
+            </nav>`
+}
+
+let backReload = () => {
+    localStorage.clear()
+    window.href = './register.html'
+}
 
 if (header) {
     header.innerHTML = `
@@ -149,7 +188,7 @@ if (addLang != null) {
             if (location.href.includes('id')) {
                 let productIdNow = window.location.href.split('?')[1].split('#')[0]
                 location.href = `${window.location.pathname}?${productIdNow}#${val}`
-            } else{
+            } else {
                 location.href = window.location.pathname + '#' + val
             }
             location.reload()
@@ -176,6 +215,11 @@ let changeLangFunc = () => {
             document.querySelector('.lang-' + item).setAttribute('placeholder', correctArray[item][hash])
         } else {
             document.querySelector('.lang-' + item).innerHTML = correctArray[item][hash]
+        }
+    }
+    for (let item in usefullLang) {
+        if(document.querySelector('.lang-' + item)){
+            document.querySelector('.lang-' + item).innerHTML = usefullLang[item][hash]
         }
     }
     localStorage.lang = hash

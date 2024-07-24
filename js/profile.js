@@ -142,12 +142,12 @@ let loadCarpet = (param, arr) => {
     correctCarpet = new Set(correctCarpet)
 
     let items = document.querySelector('.items')
-    console.log(arr);
+    console.log(correctCarpet.size);
     items.innerHTML = ''
+    if (correctCarpet.size != 0) {
     for (let val of correctCarpet) {
         let div = document.createElement('div')
         div.classList.add('item')
-        if (arr.length > 0) {
             for (let item of arr) {
                 div.id = item._id
                 div.innerHTML = `
@@ -167,10 +167,10 @@ let loadCarpet = (param, arr) => {
                 `
             }
             items.append(div)
-        } else {
-            console.log('no one');
-            items.innerHTML = 'В избранном ничего нет'
         }
+    } else if(correctCarpet.size == 0){
+        console.log('no one');
+        items.innerHTML = 'В избранном ничего нет'
     }
 }
 
