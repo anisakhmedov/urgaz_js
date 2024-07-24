@@ -112,6 +112,7 @@ let showCart = () => {
     axios.get(`${api}/users/${localStorage.user}`)
         .then((res) => {
             carpet = res.data.codeCarpets
+            console.log(new Set(carpet.split(', ')));
             loadCarpet(new Set(carpet.split(', ')), arrCarpets)
         })
         .catch((err) => console.error(err))
@@ -126,36 +127,41 @@ let loadCarpet = (param, arr) => {
     for (let carpet of param) {
         for (let item of arrCarpets) {
             for (let imageCarpet of item.image_carpet) {
-                if (carpet == imageCarpet.image_carpet.split('-')[1].split('.')[0]) {
+                if (carpet.toLowerCase() == imageCarpet.image_carpet.split('-')[1].split('.')[0].toLowerCase()) {
                     correctCarpet.push(imageCarpet.image_carpet)
                 }
             }
             for (let imageTaft of item.image_taft) {
-                if (carpet == imageTaft.image_taft.split('-')[1].split('.')[0]) {
+                if (carpet.toLowerCase() == imageTaft.image_taft.split('-')[1].split('.')[0].toLowerCase()) {
                     correctTaft.push(imageTaft.image_taft)
                 }
             }
         }
     }
 
+    correctTaft = new Set(correctTaft)
+    correctCarpet = new Set(correctCarpet)
+
     let items = document.querySelector('.items')
     items.innerHTML = ''
-    for (let val of correctTaft) {
+    for (let val of correctCarpet) {
         let div = document.createElement('div')
         div.classList.add('item')
         for (let item of arr) {
             div.id = item._id
             div.innerHTML = `
-            <img src="${api}/${val}" alt="">
-            <div class="text">
-                <h2>${item.title}</h2>
-                <p class="code">Вес: <span>${item.weight}</span></p>
-                <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
-                <p class="category">Ворс: <span>${item.vorse}</span></p>
-                <div class="actions">
-                    <button class="showCarpet">Посмотреть товар</button>
-                    <p onclick="removeCarpetUser()">Удалить</p>
+            <div class="top">
+                <img src="${api}/${val}" alt="">
+                <div class="text">
+                    <h2>${item.title}</h2>
+                    <p class="code">Вес: <span>${item.weight}</span></p>
+                    <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
+                    <p class="category">Ворс: <span>${item.vorse}</span></p>
                 </div>
+            </div>
+            <div class="actions">
+                    <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
+                    <button onclick="removeCarpetUser()">Удалить</button>
             </div>
             `
         }
@@ -178,4 +184,13 @@ let removeCarpetUser = () => {
             showCart()
         })
         .catch((err) => console.error(err))
+}
+
+let openCarpet = (param) => {
+    let item = event.target.parentNode.parentNode.querySelector('img').src.split('-')[3].split('.')[0]
+    console.log(event.target.parentNode.parentNode);
+    let idPageCarp = event.target.parentNode.parentNode.id
+    
+    window.location.href = `product.html?id=${idPageCarp}?carpetID=${item}#${usefullHash}`
+    
 }

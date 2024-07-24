@@ -72,6 +72,27 @@
             }
         }
     }
+    #product-page {
+        .thumbnails {
+            width: 600px !important;
+        }
+        .info {
+            .right {
+                margin-left: 25px !important;
+            }
+            gap: 4px;
+            h2 {
+                font-size: 42px !important;
+            }
+            p {
+                font-size: 20px !important;
+            }
+            button {
+                font-size: 16px !important;
+                padding: 10px 20px !important;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -128,6 +149,30 @@
     }
     .footer {
         padding: 70px 30px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    .other-carpets {
+        .carpet {
+            .btn {
+                height: 30px !important;
+                p {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+    #product-page {
+        h1 {
+            font-size: 24px;
+        }
+        .carousel-info {
+            margin-bottom: 10px !important;
+            .left .main-carousel img {
+                height: 500px;
+            }
+        }
     }
 }
 
@@ -200,6 +245,30 @@
     }
     #login form {
         width: 400px;
+    }
+    #product-page {
+        .other-carpets .carpet .btn p {
+            font-size: 16px !important;
+        }
+        .carousel-info {
+            .right {
+                margin-left: 0 !important;
+                .thumbnails {
+                    width: auto !important;
+                }
+                .info {
+                    margin-top: 12px;
+                    gap: 0px;
+                }
+            }
+            .left {
+                .main-carousel img {
+                    height: 400px;
+                }
+                width: 100% !important;
+            }
+            flex-direction: column;
+        }
     }
 }
 
@@ -276,6 +345,9 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .other-carpets {
+        flex-direction: column;
+    }
     .footer {
         .logo {
             img {
@@ -398,6 +470,46 @@
                     button {
                         font-size: 12px;
                         padding: 5px 10px;
+                    }
+                }
+            }
+        }
+    }
+    #product-page {
+        h1{
+            font-size: 18px !important;
+        }
+        .other-carpets{
+            .img{
+                img{
+                    height: 115px !important;
+                }
+            }
+        }
+        .carousel-info {
+            .left .main-carousel img {
+                height: 150px !important;
+            }
+            .right {
+                .thumbnails {
+                    gap: 8px;
+                    img {
+                        height: 90px !important;
+                    }
+                }
+                .info {
+                    button {
+                        font-size: 12px !important;
+                        padding: 10px 20px !important;
+                    }
+                    p {
+                        font-size: 14px !important;
+                        &:first-child {
+                            margin-bottom: -5px;
+                        }
+                    }
+                    h2 {
+                        font-size: 26px !important;
                     }
                 }
             }

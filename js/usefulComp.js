@@ -196,7 +196,6 @@ if (changeLang != null) {
 let menu = document.querySelector('.menu')
 
 if (menu != undefined) {
-
     menu.onclick = () => {
         let menu_act = document.querySelector('.menu-header')
         if (menu_act.classList.contains('active')) {
