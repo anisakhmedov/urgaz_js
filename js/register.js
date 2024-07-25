@@ -38,28 +38,31 @@ regForm.onsubmit = () => {
     })
     if (obj.password === obj.password2) {
         delete obj.password2
-        for (let item of allUsers) {
-            if (item.email.includes(obj.email)) {
-                document.querySelector('#incorrect-email').classList.add('active')
-                break
-            } else if (!item.email.includes(obj.email) && item.phone.includes(obj.phone)) {
-                document.querySelector('#incorrect-email').classList.remove('active')
-                document.querySelector('#incorrect-phone').classList.add('active')
-                break
-            } else if (!item.email.includes(obj.email) && !item.phone.includes(obj.phone)) {
-                document.querySelector('#incorrect-phone').classList.remove('active')
-                axios.post(api + '/users', obj)
-                    .then((response) => {
-                        localStorage.user = response.data._id
-                        window.location.href = window.location.href.replace('register.html', 'index.html')
-                        localStorage.enter = 'true'
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    })
-                break
-            }
-        }
+        // for (let item of allUsers) {
+        //     console.log('email');
+        //     if (item.email.includes(obj.email)) {
+        //         document.querySelector('#incorrect-email').classList.add('active')
+        //         break
+        //     } else if (!item.email.includes(obj.email) && item.phone.includes(obj.phone)) {
+        //         console.log('number');
+        //         document.querySelector('#incorrect-email').classList.remove('active')
+        //         document.querySelector('#incorrect-phone').classList.add('active')
+        //         break
+        //     } else if (!item.email.includes(obj.email) && !item.phone.includes(obj.phone) || ) {
+        //         document.querySelector('#incorrect-phone').classList.remove('active')
+        //         console.log('send');
+        axios.post(api + '/users', obj)
+            .then((response) => {
+                localStorage.user = response.data._id
+                window.location.href = window.location.href.replace('register.html', 'index.html')
+                localStorage.enter = 'true'
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+        //         break
+        //     }
+        // }
     }
 }
 

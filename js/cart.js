@@ -1,6 +1,5 @@
 let userId = localStorage.user
 let user = {}
-let userImg = document.querySelector('#profile-img')
 let arrCarpets = []
 
 let UploadCarpets = () => {
@@ -12,70 +11,12 @@ let UploadCarpets = () => {
 }
 UploadCarpets()
 
-let getUser = () => {
-    axios.get(`${api}/users/${userId}`)
-        .then((res) => {
-            user = res.data
-            loadData(user)
-        })
-        .catch((err) => console.error(err))
-}
-
-getUser()
-
-let loadData = (param) => {
-    let form = document.querySelector('form')
-    for (let item of document.querySelectorAll('input')) {
-        for (let key in param) {
-            if (key == item.getAttribute('name')) {
-                item.setAttribute('value', param[key])
-            }
-        }
-    }
-
-    form.onsubmit = () => {
-        event.preventDefault();
-        let fm = new FormData(event.target);
-        let obj = {}
-
-        fm.forEach((val, key) => obj[key] = val)
-
-        axios.patch(`${api}/users/${param._id}`, obj)
-            .then((res) => getUser())
-            .catch((err) => console.error(err))
-    }
-}
-
-let updateUser = document.getElementById('saveNewUser')
-
-updateUser.onclick = () => {
-    let inpts = updateUser.parentNode.querySelectorAll('input')
-
-    let obj = {}
-    for (let item of inpts) {
-        obj = {
-            name: item.getAttribute('name') == 'name' ? item.value : user.name,
-            surname: item.getAttribute('name') == 'surname' ? item.value : user.surname,
-            email: item.getAttribute('name') == 'email' ? item.value : user.email,
-            phone: item.getAttribute('name') == 'phone' ? item.value : user.phone,
-            password: item.getAttribute('name') == 'password' ? item.value : user.password,
-        }
-
-        if (item.getAttribute('name') == 'new_password') {
-            if (item.value != '') obj.password = item.value
-            else obj.password = user.password
-        }
-    }
-
-    axios.patch(`${api}/users/${user._id}`, obj)
-        .then((res) => getUser())
-        .catch((err) => console.error(err))
-}
-
 let showCart = () => {
     axios.get(`${api}/users/${localStorage.user}`)
         .then((res) => {
+            user = res.data
             carpet = res.data.codeCarpets
+            console.log(new Set(carpet.split(', ')));
             loadCarpet(new Set(carpet.split(', ')), arrCarpets)
         })
         .catch((err) => console.error(err))
@@ -83,6 +24,7 @@ let showCart = () => {
 }
 
 showCart()
+
 
 let loadCarpet = (param, arr) => {
     let correctCarpet = []
@@ -109,9 +51,9 @@ let loadCarpet = (param, arr) => {
     console.log(correctCarpet.size);
     items.innerHTML = ''
     if (correctCarpet.size != 0) {
-    for (let val of correctCarpet) {
-        let div = document.createElement('div')
-        div.classList.add('item')
+        for (let val of correctCarpet) {
+            let div = document.createElement('div')
+            div.classList.add('item')
             for (let item of arr) {
                 div.id = item._id
                 div.innerHTML = `
@@ -132,7 +74,7 @@ let loadCarpet = (param, arr) => {
             }
             items.append(div)
         }
-    } else if(correctCarpet.size == 0){
+    } else if (correctCarpet.size == 0) {
         console.log('no one');
         items.innerHTML = 'В избранном ничего нет'
     }

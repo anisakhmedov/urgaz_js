@@ -92,7 +92,9 @@ if (header) {
             </a>
         </nav>
         <nav class="nav-icons">
+            <a href="./cart.html">
             <img src="../assets/img/icons/star.svg" alt="">
+            </a>
             <div class="icon-lang">
                 <img src="../assets/img/icons/language.svg" alt="">
                 <div class="languages">

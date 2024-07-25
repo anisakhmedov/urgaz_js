@@ -19,16 +19,6 @@ let profileLang = {
         "en": "Favourites",
         "uz": "Sevimlilar",
     },
-    "uploadImage": { //done
-        "ru": "Загрузить фото",
-        "en": "Upload a photo",
-        "uz": "Fotosuratni yuklash",
-    },
-    "saveImage": { //done
-        "ru": "Сохранить",
-        "en": "Save",
-        "uz": "Saqlash",
-    },
     "name": {
         "ru": "Имя",
         "en": "First Name",
