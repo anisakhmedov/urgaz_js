@@ -4,27 +4,30 @@ let menu_mob = document.querySelector('.menu-header')
 let api = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com'
 let currentPage = window.location.href.split('/')[4]
 
-if (currentPage != undefined) {
-    if (localStorage.enter === 'false' || !localStorage.enter) {
-        if (!currentPage.includes('register')) {
-            localStorage.enter = 'false'
-            window.location.href = window.location.href.replace(currentPage, 'register.html')
-        } else {
+let checkUserPage = () => {
+    if (currentPage != undefined) {
+        if (localStorage.enter === 'false' || !localStorage.enter) {
+            if (!currentPage.includes('register')) {
+                localStorage.enter = 'false'
+                window.location.href = window.location.href.replace(currentPage, 'register.html')
+            } else {
 
+            }
+        } else {
+            if (currentPage.includes('register.html')) {
+                localStorage.enter = 'true'
+                window.location.href = window.location.href.replace('register.html', 'index.html')
+            }
         }
     } else {
-        if (currentPage.includes('register.html')) {
-            localStorage.enter = 'true'
-            window.location.href = window.location.href.replace('register.html', 'index.html')
-        }
+        window.location.href = './pages/register.html'
     }
-} else {
-    window.location.href = './pages/register.html'
 }
+checkUserPage()
 
-if(!localStorage.user){
-    window.location.href = './pages/register.html'
-}
+// if (!localStorage.user) {
+//     window.location.href = './pages/register.html'
+// }
 
 let useArrLang = usefullLang
 let correctArray;
@@ -58,8 +61,8 @@ if (menu_mob) {
                     <p>Профиль</p>
                     <img src="../assets/img/icons/contact.svg" alt="">
                 </a>
-                <a class="lang-menu_exit" href="./register.html">
-                    <p onclick="backReload()">Выйти</p>
+                <a class="lang-menu_exit" onclick="backReload()" href="#">
+                    <p>Выйти</p>
                 </a>
                 <div class="languages">
                     <div class="change-lan-lan ru">RUS</div>
@@ -70,8 +73,10 @@ if (menu_mob) {
 }
 
 let backReload = () => {
+    // console.log(123);
     localStorage.clear()
-    window.href = './register.html'
+    // window.location.href = './register.html'
+    checkUserPage()
 }
 
 if (header) {
@@ -224,7 +229,7 @@ let changeLangFunc = () => {
         }
     }
     for (let item in usefullLang) {
-        if(document.querySelector('.lang-' + item)){
+        if (document.querySelector('.lang-' + item)) {
             document.querySelector('.lang-' + item).innerHTML = usefullLang[item][hash]
         }
     }
