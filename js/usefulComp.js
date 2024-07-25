@@ -22,6 +22,10 @@ if (currentPage != undefined) {
     window.location.href = './pages/register.html'
 }
 
+if(!localStorage.user){
+    window.location.href = './pages/register.html'
+}
+
 let useArrLang = usefullLang
 let correctArray;
 let hash = window.location.hash
