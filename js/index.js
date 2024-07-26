@@ -18,6 +18,17 @@ let GetData = () => {
     axios.get(api + '/carpets')
         .then((res) => {
             arr = res.data
+            // console.log(arr);
+            for(let item of arr){
+                // console.log(item.codes.split(', '));
+                item.image = []
+                item.taft = []
+                for(let ket of item.codes.split(', ')){
+                    item.image.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/code/${ket}.jpg`)
+                    item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
+                }
+            }
+            console.log(arr);
             showData(arr)
         })
         .catch((err) => console.error(err))
@@ -25,10 +36,11 @@ let GetData = () => {
 GetData()
 
 let wrapper = document.querySelector('.wrapper')
-console.log(hash);
 let showData = (param) => {
     wrapper.innerHTML = ''
     for (let item of param) {
+
+
         let mainDiv = document.createElement('div')
         let mainDivImg = document.createElement('div')
         let mainDivImages = document.createElement('img')
@@ -44,9 +56,9 @@ let showData = (param) => {
         let mainDivDiscColorsText = document.createElement('p')
         let mainDivDiscColors = document.createElement('div')
 
-        for (let imgCarpet of item.image_carpet) {
+        for (let imgCarpet of item.image) {
             let mainDivDiscColorsImages = document.createElement('img') // a lot of images
-            mainDivDiscColorsImages.src = `${api}/${imgCarpet.image_carpet}`
+            mainDivDiscColorsImages.src = imgCarpet
             mainDivDiscColors.append(mainDivDiscColorsImages)
         }
         let mainDivDiscDiscription = document.createElement('div')
@@ -68,20 +80,15 @@ let showData = (param) => {
             window.location.href = `product.html?id=${item._id}#${usefullHash}`
         }
 
-        // link.innerHTML = 'Подробная информация'
         mainDiv.id = item._id
         mainDivImgBottomText.innerHTML = item.title
-        // mainDivDiscColorsText.innerHTML = 'Доступные цвета'
-        // mainDivDiscVors.innerHTML = 'Ворс'
-        // mainDivDiscWeight.innerHTML = 'Ширина'
-        // mainDivDiscPuchok.innerHTML = 'Кол-во пучков'
         mainDivDiscVorsSpan.innerHTML = item.vorse
         mainDivDiscPuchokSpan.innerHTML = item.valuePuchok
         mainDivDiscWeightSpan.innerHTML = item.weight
-        
+
         mainDivImgTopShowImg.src = '../assets/img/icons/eye.svg'
         mainDivImgStarShowImg.src = '../assets/img/icons/star-white.svg'
-        mainDivImages.src = `${api}/${item.image_taft[0].image_taft}`
+        mainDivImages.src = item.taft[0]
         
         link.classList.add('lang-carpet_more')
         mainDivDiscColorsText.classList.add('lang-carpet_colors')
@@ -102,14 +109,6 @@ let showData = (param) => {
         mainDiv.classList.add('carpet')
         button.classList.add('btn')
         
-        for (let langCarpet in lang) {
-            for (let langItemCarpet of document.querySelectorAll('.lang-' + langCarpet)) {
-                langItemCarpet.innerHTML = lang[langCarpet][hash]
-                if(langItemCarpet.getAttribute('placeholder')){
-                    langItemCarpet.setAttribute('placeholder', lang[langCarpet][hash])
-                }
-            }
-        }
         
         mainDivDiscDiscriptionVors.append(mainDivDiscVors, mainDivDiscVorsSpan)
         mainDivDiscDiscriptionPuchok.append(mainDivDiscPuchok, mainDivDiscPuchokSpan)
@@ -123,15 +122,25 @@ let showData = (param) => {
         mainDivImg.append(mainDivImages, mainDivImgTop, mainDivImgBottom)
         button.append(link)
         mainDiv.append(mainDivImg, mainDivDisc, button)
-
+        
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
-
+        
         mainDivImgStarShow.onclick = () => {
-            let correceCarpet = item.image_taft[0].image_taft.split('-')[1].split('.')[0]
+            // console.log();
+            let correceCarpet = event.target.parentNode.parentNode.parentNode.querySelector('.img-carpet').src.split('taft/')[1].split('.jpg')[0]
             addInCart(correceCarpet)
+        }
+
+        for (let langCarpet in lang) {
+            for (let langItemCarpet of document.querySelectorAll('.lang-' + langCarpet)) {
+                langItemCarpet.innerHTML = lang[langCarpet][hash]
+                if(langItemCarpet.getAttribute('placeholder')){
+                    langItemCarpet.setAttribute('placeholder', lang[langCarpet][hash])
+                }
+            }
         }
     }
 }
@@ -141,6 +150,7 @@ let GetUser = () => {
     axios.get(api + '/users/' + localStorage.user)
         .then((res) => {
             userNow = res.data
+            console.log(res.data);
         })
         .catch((err) => console.error(err))
 }
@@ -153,6 +163,7 @@ let addInCart = (param) => {
     if (!userNow.codeCarpets) sendObj.codeCarpets = param
     else sendObj.codeCarpets = userNow.codeCarpets + ', ' + param
 
+    // console.log(sendObj);
     axios.patch(`${api}/users/${localStorage.user}`, sendObj)
         .then((response) => {
             console.log(response);

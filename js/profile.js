@@ -75,8 +75,9 @@ updateUser.onclick = () => {
 let showCart = () => {
     axios.get(`${api}/users/${localStorage.user}`)
         .then((res) => {
+            console.log(res.data);
             carpet = res.data.codeCarpets
-            loadCarpet(new Set(carpet.split(', ')), arrCarpets)
+            loadCarpet(carpet)
         })
         .catch((err) => console.error(err))
 
@@ -84,58 +85,59 @@ let showCart = () => {
 
 showCart()
 
-let loadCarpet = (param, arr) => {
-    let correctCarpet = []
-    let correctTaft = []
-    for (let carpet of param) {
-        for (let item of arrCarpets) {
-            for (let imageCarpet of item.image_carpet) {
-                if (carpet.toLowerCase() == imageCarpet.image_carpet.split('-')[1].split('.')[0].toLowerCase()) {
-                    correctCarpet.push(imageCarpet.image_carpet)
-                }
-            }
-            for (let imageTaft of item.image_taft) {
-                if (carpet.toLowerCase() == imageTaft.image_taft.split('-')[1].split('.')[0].toLowerCase()) {
-                    correctTaft.push(imageTaft.image_taft)
-                }
-            }
-        }
-    }
+let loadCarpet = (param) => {
+    console.log(param);
+    // let correctCarpet = []
+    // let correctTaft = []
+    // for (let carpet of param) {
+    //     for (let item of arrCarpets) {
+    //         for (let imageCarpet of item.image_carpet) {
+    //             if (carpet.toLowerCase() == imageCarpet.image_carpet.split('-')[1].split('.')[0].toLowerCase()) {
+    //                 correctCarpet.push(imageCarpet.image_carpet)
+    //             }
+    //         }
+    //         for (let imageTaft of item.image_taft) {
+    //             if (carpet.toLowerCase() == imageTaft.image_taft.split('-')[1].split('.')[0].toLowerCase()) {
+    //                 correctTaft.push(imageTaft.image_taft)
+    //             }
+    //         }
+    //     }
+    // }
 
-    correctTaft = new Set(correctTaft)
-    correctCarpet = new Set(correctCarpet)
+    // correctTaft = new Set(correctTaft)
+    // correctCarpet = new Set(correctCarpet)
 
-    let items = document.querySelector('.items')
-    console.log(correctCarpet.size);
-    items.innerHTML = ''
-    if (correctCarpet.size != 0) {
-    for (let val of correctCarpet) {
-        let div = document.createElement('div')
-        div.classList.add('item')
-            for (let item of arr) {
-                div.id = item._id
-                div.innerHTML = `
-                <div class="top">
-                <img src="${api}/${val}" alt="">
-                <div class="text">
-                <h2>${item.title}</h2>
-                <p class="code">Вес: <span>${item.weight}</span></p>
-                <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
-                <p class="category">Ворс: <span>${item.vorse}</span></p>
-                </div>
-                </div>
-                <div class="actions">
-                <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
-                <button onclick="removeCarpetUser()">Удалить</button>
-                </div>
-                `
-            }
-            items.append(div)
-        }
-    } else if(correctCarpet.size == 0){
-        console.log('no one');
-        items.innerHTML = 'В избранном ничего нет'
-    }
+    // let items = document.querySelector('.items')
+    // console.log(correctCarpet.size);
+    // items.innerHTML = ''
+    // if (correctCarpet.size != 0) {
+    // for (let val of correctCarpet) {
+    //     let div = document.createElement('div')
+    //     div.classList.add('item')
+    //         for (let item of arr) {
+    //             div.id = item._id
+    //             div.innerHTML = `
+    //             <div class="top">
+    //             <img src="${api}/${val}" alt="">
+    //             <div class="text">
+    //             <h2>${item.title}</h2>
+    //             <p class="code">Вес: <span>${item.weight}</span></p>
+    //             <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
+    //             <p class="category">Ворс: <span>${item.vorse}</span></p>
+    //             </div>
+    //             </div>
+    //             <div class="actions">
+    //             <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
+    //             <button onclick="removeCarpetUser()">Удалить</button>
+    //             </div>
+    //             `
+    //         }
+    //         items.append(div)
+    //     }
+    // } else if(correctCarpet.size == 0){
+    //     console.log('no one');
+    //     items.innerHTML = 'В избранном ничего нет'
+    // }
 }
 
 let removeCarpetUser = () => {
