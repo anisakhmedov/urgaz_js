@@ -6,7 +6,13 @@ find_filter.addEventListener('click', () => {
 });
 
 let showFilter = document.querySelector('.open-filter')
+let showFilterX = document.querySelector('.filter-x img')
 let leftSide = document.querySelector('.left-side')
+
+showFilterX.onclick = () => {
+    if (!leftSide.classList.contains('active')) leftSide.classList.add('active')
+    else leftSide.classList.remove('active')
+}
 
 showFilter.onclick = () => {
     if (!leftSide.classList.contains('active')) leftSide.classList.add('active')
