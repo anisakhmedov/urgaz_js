@@ -38,7 +38,6 @@ let getCarpetsProd = async () => {
         .then((res) => {
             arr = res.data
             for (let item of arr) {
-                // console.log(item.codes.split(', '));
                 item.image = []
                 item.taft = []
                 for (let ket of item.codes.split(', ')) {
@@ -46,15 +45,14 @@ let getCarpetsProd = async () => {
                     item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
                 }
             }
-            // console.log(arr);
             uploadCarpetArray(getMultipleRandom(arr, widthArray))
         })
         .catch((err) => console.error(err))
 
     await axios.get(apiCarpets + 'carpets/' + carpetIdPage)
         .then((res) => {
-            for(let item of arr){
-                if(item._id == res.data._id){
+            for (let item of arr) {
+                if (item._id == res.data._id) {
                     obj = item
                 }
             }
@@ -71,7 +69,6 @@ let getCarpetsProd = async () => {
             let vorse = document.createElement('p')
             vorse.innerHTML = 'Ворс: ' + obj.vorse
             let valueNow = document.createElement('p')
-            // valueNow.innerHTML = 'В наличии: ' + obj.image_carpet.length
             let btn = document.createElement('button')
             btn.innerHTML = 'Добавить в избранное'
 
@@ -84,19 +81,28 @@ let getCarpetsProd = async () => {
             btn.onclick = () => {
                 let sendObj = userNow
                 delete sendObj._id
-                // console.log(carpetCodeIdPage);
                 if (!userNow.codeCarpets) sendObj.codeCarpets = carpetCodeIdPage
                 else sendObj.codeCarpets = userNow.codeCarpets + ', ' + carpetCodeIdPage
 
                 let fm = new FormData();
                 fm.append('codeCarpets', sendObj.codeCarpets)
-                // console.log(sendObj);
-                // console.log(apiCarpets);
-                // console.log(localStorage.user);
-                console.log(fm);
-                axios.patch(`${apiCarpets}users/${localStorage.user}`, fm)
+
+                const updatedData = {
+                    name: sendObj.name,
+                    surname: sendObj.surname,
+                    email: sendObj.email,
+                    password: sendObj.password,
+                    phone: sendObj.phone,
+                    image: sendObj.image,
+                    codeCarpets: sendObj.codeCarpets
+                };
+
+                axios.patch(`${apiCarpets}users/${localStorage.user}`, fm, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
                     .then((res) => {
-                        console.log(res);
                     })
                     .catch((err) => {
                         console.error(err);
@@ -116,7 +122,6 @@ let mainCarp = document.querySelector('.main-carousel img')
 let selectCarpet = document.querySelector('.thumbnails')
 
 let uploadCarpets = (param) => {
-    console.log(param);
     let c = param.image
     let v = param.taft
     for (let item of c) {
@@ -125,9 +130,8 @@ let uploadCarpets = (param) => {
         selectCarpet.appendChild(img)
 
         img.onclick = () => {
-
             let code = item.split('/code/')[1].split('.')[0]
-            
+
             if (window.location.href.includes('carpetID')) {
                 window.location.href = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
             } else {
@@ -135,7 +139,7 @@ let uploadCarpets = (param) => {
             }
             for (let carpetTaft of v) {
                 if (carpetTaft.toLowerCase().includes(code.toLowerCase())) {
-                    mainCarp.src = apiCarpets + carpetTaft
+                    mainCarp.src = carpetTaft
                     img.classList.add('active')
                 }
             }
@@ -201,7 +205,7 @@ let uploadCarpetArray = (param) => {
         link.innerHTML = 'Подробная информация'
         mainDiv.id = item._id
 
-        // mainDivImages.src = `${api}/${item.image_taft[0].image_taft}`
+        mainDivImages.src = item.taft[0]
 
         mainDivImg.classList.add('img')
         mainDiv.classList.add('carpet')
@@ -223,7 +227,6 @@ let addInCart = (param) => {
 
     axios.patch(`${api}/users/${localStorage.user}`, sendObj)
         .then((response) => {
-            console.log(response);
         })
         .catch((err) => console.error(err))
 }

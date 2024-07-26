@@ -73,9 +73,7 @@ if (menu_mob) {
 }
 
 let backReload = () => {
-    // console.log(123);
     localStorage.clear()
-    // window.location.href = './register.html'
     checkUserPage()
 }
 
@@ -194,7 +192,6 @@ let addLang = document.querySelectorAll('.change-lan-lan')
 if (addLang != null) {
     for (let item of addLang) {
         item.onclick = () => {
-            console.log(item);
             let val = item.getAttribute('class').split(' ')[1]
             if (location.href.includes('id')) {
                 let productIdNow = window.location.href.split('?')[1].split('#')[0]
@@ -206,7 +203,6 @@ if (addLang != null) {
         }
     }
 } else {
-    console.log(addLang);
 }
 const allLang = ['en', 'uz', 'ru']
 

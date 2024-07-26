@@ -18,9 +18,7 @@ let GetData = () => {
     axios.get(api + '/carpets')
         .then((res) => {
             arr = res.data
-            // console.log(arr);
             for(let item of arr){
-                // console.log(item.codes.split(', '));
                 item.image = []
                 item.taft = []
                 for(let ket of item.codes.split(', ')){
@@ -28,7 +26,6 @@ let GetData = () => {
                     item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
                 }
             }
-            console.log(arr);
             showData(arr)
         })
         .catch((err) => console.error(err))
@@ -129,7 +126,6 @@ let showData = (param) => {
         wrapper.append(mainDiv)
         
         mainDivImgStarShow.onclick = () => {
-            // console.log();
             let correceCarpet = event.target.parentNode.parentNode.parentNode.querySelector('.img-carpet').src.split('taft/')[1].split('.jpg')[0]
             addInCart(correceCarpet)
         }
@@ -150,7 +146,6 @@ let GetUser = () => {
     axios.get(api + '/users/' + localStorage.user)
         .then((res) => {
             userNow = res.data
-            console.log(res.data);
         })
         .catch((err) => console.error(err))
 }
@@ -163,10 +158,8 @@ let addInCart = (param) => {
     if (!userNow.codeCarpets) sendObj.codeCarpets = param
     else sendObj.codeCarpets = userNow.codeCarpets + ', ' + param
 
-    // console.log(sendObj);
     axios.patch(`${api}/users/${localStorage.user}`, sendObj)
         .then((response) => {
-            console.log(response);
         })
         .catch((err) => console.error(err))
 }

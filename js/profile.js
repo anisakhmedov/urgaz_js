@@ -7,6 +7,14 @@ let UploadCarpets = () => {
     axios.get(api + '/carpets')
         .then((res) => {
             arrCarpets = res.data
+            for (let item of arrCarpets) {
+                item.image = []
+                item.taft = []
+                for (let ket of item.codes.split(', ')) {
+                    item.image.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/code/${ket}.jpg`)
+                    item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
+                }
+            }
         })
         .catch((err) => console.error(err))
 }
@@ -75,7 +83,6 @@ updateUser.onclick = () => {
 let showCart = () => {
     axios.get(`${api}/users/${localStorage.user}`)
         .then((res) => {
-            console.log(res.data);
             carpet = res.data.codeCarpets
             loadCarpet(carpet)
         })
@@ -86,82 +93,69 @@ let showCart = () => {
 showCart()
 
 let loadCarpet = (param) => {
-    console.log(param);
-    // let correctCarpet = []
-    // let correctTaft = []
-    // for (let carpet of param) {
-    //     for (let item of arrCarpets) {
-    //         for (let imageCarpet of item.image_carpet) {
-    //             if (carpet.toLowerCase() == imageCarpet.image_carpet.split('-')[1].split('.')[0].toLowerCase()) {
-    //                 correctCarpet.push(imageCarpet.image_carpet)
-    //             }
-    //         }
-    //         for (let imageTaft of item.image_taft) {
-    //             if (carpet.toLowerCase() == imageTaft.image_taft.split('-')[1].split('.')[0].toLowerCase()) {
-    //                 correctTaft.push(imageTaft.image_taft)
-    //             }
-    //         }
-    //     }
-    // }
+    let correctCarpet = []
+    let correctTaft = []
+    for (let item of arrCarpets) {
+        for (let img of item.codes.split(', ')) {
+            for (let key of param.split(", ")) {
+                if (img == key) {
+                    for (let some of item.image) {
+                        if (some.toString().toLowerCase().includes(img.toString().toLowerCase())) {
+                            correctCarpet.push({ 'item': item, codes: some })
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-    // correctTaft = new Set(correctTaft)
-    // correctCarpet = new Set(correctCarpet)
-
-    // let items = document.querySelector('.items')
-    // console.log(correctCarpet.size);
-    // items.innerHTML = ''
-    // if (correctCarpet.size != 0) {
-    // for (let val of correctCarpet) {
-    //     let div = document.createElement('div')
-    //     div.classList.add('item')
-    //         for (let item of arr) {
-    //             div.id = item._id
-    //             div.innerHTML = `
-    //             <div class="top">
-    //             <img src="${api}/${val}" alt="">
-    //             <div class="text">
-    //             <h2>${item.title}</h2>
-    //             <p class="code">Вес: <span>${item.weight}</span></p>
-    //             <p class="color">Кол-во пучков: <span>${item.valuePuchok}</span></p>
-    //             <p class="category">Ворс: <span>${item.vorse}</span></p>
-    //             </div>
-    //             </div>
-    //             <div class="actions">
-    //             <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
-    //             <button onclick="removeCarpetUser()">Удалить</button>
-    //             </div>
-    //             `
-    //         }
-    //         items.append(div)
-    //     }
-    // } else if(correctCarpet.size == 0){
-    //     console.log('no one');
-    //     items.innerHTML = 'В избранном ничего нет'
-    // }
+    let items = document.querySelector('.items')
+    items.innerHTML = ''
+    if (correctCarpet.length != 0) {
+        for (let val of correctCarpet) {
+            let div = document.createElement('div')
+            div.classList.add('item')
+            div.id = val.item._id
+            div.innerHTML = `
+                <div class="top">
+                <img src="${val.codes}" alt="">
+                <div class="text">
+                <h2>${val.item.title}</h2>
+                <p class="code">Вес: <span>${val.item.weight}</span></p>
+                <p class="color">Кол-во пучков: <span>${val.item.valuePuchok}</span></p>
+                <p class="category">Ворс: <span>${val.item.vorse}</span></p>
+                </div>
+                </div>
+                <div class="actions">
+                <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
+                <button onclick="removeCarpetUser()">Удалить</button>
+                </div>
+                `
+            items.append(div)
+        }
+    } else if (correctCarpet.size == 0) {
+        items.innerHTML = 'В избранном ничего нет'
+    }
 }
 
 let removeCarpetUser = () => {
-    let removeCarpet = event.target.parentNode.parentNode.parentNode.querySelector('img').src.split('-')[3].split('.')[0]
+    let removeCarpet = event.target.parentNode.parentNode.querySelector('img').src.split('code/')[1].split('.')[0]
+    let specArr = user.codeCarpets.split(', ')
+    specArr = specArr.filter(item => item != removeCarpet);
+    let str = ''
+    for (let item of specArr) str += ', ' + item
+    str = str.replace(', ', '')
 
-    let objRemove = user.codeCarpets.replace(removeCarpet, '')
-
-    if (objRemove[0] == ',') objRemove = objRemove.replace(', ', '')
-    // objRemove = objRemove.split(',').filter(item => item.length > 2)
-
-    user.codeCarpets = objRemove
-
-    console.log(user.codeCarpets);
+    user.codeCarpets = str
     axios.patch(`${api}/users/${localStorage.user}`, user)
         .then((res) => {
-            console.log(res);
             showCart()
         })
         .catch((err) => console.error(err))
 }
 
 let openCarpet = (param) => {
-    let item = event.target.parentNode.parentNode.querySelector('img').src.split('-')[3].split('.')[0]
-    console.log(event.target.parentNode.parentNode);
+    let item = event.target.parentNode.parentNode.querySelector('img').src.split('code/')[1].split('.')[0]
     let idPageCarp = event.target.parentNode.parentNode.id
 
     window.location.href = `product.html?id=${idPageCarp}?carpetID=${item}#${usefullHash}`

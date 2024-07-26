@@ -16,7 +16,6 @@ let showCart = () => {
         .then((res) => {
             user = res.data
             carpet = res.data.codeCarpets
-            console.log(new Set(carpet.split(', ')));
             loadCarpet(new Set(carpet.split(', ')), arrCarpets)
         })
         .catch((err) => console.error(err))
@@ -48,7 +47,6 @@ let loadCarpet = (param, arr) => {
     correctCarpet = new Set(correctCarpet)
 
     let items = document.querySelector('.items')
-    console.log(correctCarpet.size);
     items.innerHTML = ''
     if (correctCarpet.size != 0) {
         for (let val of correctCarpet) {
@@ -75,7 +73,6 @@ let loadCarpet = (param, arr) => {
             items.append(div)
         }
     } else if (correctCarpet.size == 0) {
-        console.log('no one');
         items.innerHTML = 'В избранном ничего нет'
     }
 }
@@ -90,10 +87,8 @@ let removeCarpetUser = () => {
 
     user.codeCarpets = objRemove
 
-    console.log(user.codeCarpets);
     axios.patch(`${api}/users/${localStorage.user}`, user)
         .then((res) => {
-            console.log(res);
             showCart()
         })
         .catch((err) => console.error(err))
