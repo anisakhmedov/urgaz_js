@@ -14,6 +14,7 @@ showFilterX.onclick = () => {
     else leftSide.classList.remove('active')
 }
 
+
 showFilter.onclick = () => {
     if (!leftSide.classList.contains('active')) leftSide.classList.add('active')
     else leftSide.classList.remove('active')
@@ -24,19 +25,21 @@ let GetData = () => {
     axios.get(api + '/carpets')
         .then((res) => {
             arr = res.data
-            for(let item of arr){
+            for (let item of arr) {
                 item.image = []
                 item.taft = []
-                for(let ket of item.codes.split(', ')){
+                for (let ket of item.codes.split(', ')) {
                     item.image.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/code/${ket}.jpg`)
                     item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
                 }
             }
             showData(arr)
+            // getAllImages(arr)
         })
         .catch((err) => console.error(err))
 }
 GetData()
+
 
 let wrapper = document.querySelector('.wrapper')
 let showData = (param) => {
@@ -59,9 +62,20 @@ let showData = (param) => {
         let mainDivDiscColorsText = document.createElement('p')
         let mainDivDiscColors = document.createElement('div')
 
+        mainDivImages.src = item.taft[0]
+
         for (let imgCarpet of item.image) {
             let mainDivDiscColorsImages = document.createElement('img') // a lot of images
             mainDivDiscColorsImages.src = imgCarpet
+            mainDivDiscColorsImages.onclick = () => {
+                for (let taf of item.taft) {
+                    if(taf.toUpperCase().includes(event.target.src.split('code/')[1].split('.')[0])){
+                        console.log(taf);
+                        mainDivImages.src = taf
+                    }
+                    // event.target.src.split('code/')[1].split('.')[0]
+                }
+            }
             mainDivDiscColors.append(mainDivDiscColorsImages)
         }
         let mainDivDiscDiscription = document.createElement('div')
@@ -91,8 +105,7 @@ let showData = (param) => {
 
         mainDivImgTopShowImg.src = '../assets/img/icons/eye.svg'
         mainDivImgStarShowImg.src = '../assets/img/icons/star-white.svg'
-        mainDivImages.src = item.taft[0]
-        
+
         link.classList.add('lang-carpet_more')
         mainDivDiscColorsText.classList.add('lang-carpet_colors')
         mainDivDiscVors.classList.add('lang-carpet_vorse')
@@ -111,8 +124,8 @@ let showData = (param) => {
         mainDivImg.classList.add('img')
         mainDiv.classList.add('carpet')
         button.classList.add('btn')
-        
-        
+
+
         mainDivDiscDiscriptionVors.append(mainDivDiscVors, mainDivDiscVorsSpan)
         mainDivDiscDiscriptionPuchok.append(mainDivDiscPuchok, mainDivDiscPuchokSpan)
         mainDivDiscDiscriptionWeight.append(mainDivDiscWeight, mainDivDiscWeightSpan)
@@ -125,12 +138,12 @@ let showData = (param) => {
         mainDivImg.append(mainDivImages, mainDivImgTop, mainDivImgBottom)
         button.append(link)
         mainDiv.append(mainDivImg, mainDivDisc, button)
-        
+
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
         wrapper.append(mainDiv)
-        
+
         mainDivImgStarShow.onclick = () => {
             let correceCarpet = event.target.parentNode.parentNode.parentNode.querySelector('.img-carpet').src.split('taft/')[1].split('.jpg')[0]
             addInCart(correceCarpet)
@@ -139,7 +152,7 @@ let showData = (param) => {
         for (let langCarpet in lang) {
             for (let langItemCarpet of document.querySelectorAll('.lang-' + langCarpet)) {
                 langItemCarpet.innerHTML = lang[langCarpet][hash]
-                if(langItemCarpet.getAttribute('placeholder')){
+                if (langItemCarpet.getAttribute('placeholder')) {
                     langItemCarpet.setAttribute('placeholder', lang[langCarpet][hash])
                 }
             }

@@ -25,6 +25,37 @@ let checkUserPage = () => {
 }
 checkUserPage()
 
+let getForLoad = () => {
+    axios.get(api + '/carpets')
+        .then((res) => {
+            let arr = []
+            arr = res.data
+            for (let item of arr) {
+                item.image = []
+                item.taft = []
+                for (let ket of item.codes.split(', ')) {
+                    item.image.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/code/${ket}.jpg`)
+                    item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
+                }
+                for(let img of item.image) {
+                    let div = document.createElement('img')
+                    div.src = img
+                    div.setAttribute('hidden', 'hidden')
+                    document.body.appendChild(div)
+                }
+                for(let img of item.taft) {
+                    let div = document.createElement('img')
+                    div.src = img
+                    div.setAttribute('hidden', 'hidden')
+                    document.body.appendChild(div)
+                }
+            }
+            console.log(arr);
+            // getAllImages(arr)
+        })
+        .catch((err) => console.error(err))
+}
+getForLoad()
 // if (!localStorage.user) {
 //     window.location.href = './pages/register.html'
 // }

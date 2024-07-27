@@ -700,6 +700,9 @@ button {
                             height: 250px;
                             img {
                                 max-height: 122px;
+                                &:hover{
+                                    cursor: pointer;
+                                }
                             }
                         }
                         .disc {
