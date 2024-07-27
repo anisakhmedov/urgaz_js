@@ -28,6 +28,14 @@ let copyLink = ''
 let arr = []
 let obj = {}
 
+if(hash == 'ru'){
+    document.querySelector('.lang-prod-more').innerHTML = 'Остальные наши товары:'
+} else if(hash == 'en'){
+    document.querySelector('.lang-prod-more').innerHTML = 'The rest of our products:'
+} else if(hash == 'uz'){
+    document.querySelector('.lang-prod-more').innerHTML = 'Qolgan mahsulotlarimiz:'
+}
+
 let getCarpetsProd = async () => {
     function getMultipleRandom(arr, num) {
         const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -58,25 +66,44 @@ let getCarpetsProd = async () => {
                 }
             }
             let info = document.querySelector('.info')
-
-            let title = document.createElement('h2')
-            title.innerHTML = obj.title
-            let categories = document.createElement('p')
-            categories.innerHTML = 'Категория: ' + obj.categories_ru
-            let puchok = document.createElement('p')
-            puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
-            let weight = document.createElement('p')
-            weight.innerHTML = 'Вес: ' + obj.weight
-            let vorse = document.createElement('p')
-            vorse.innerHTML = 'Ворс: ' + obj.vorse
-            let valueNow = document.createElement('p')
-
-            let copyBtn = document.createElement('div')
-            copyBtn.classList.add('copyBtn')
             let btn = document.createElement('button')
+            let copyBtn = document.createElement('div')
+            let title = document.createElement('h2')
+            let categories = document.createElement('p')
+            let puchok = document.createElement('p')
+            let weight = document.createElement('p')
+            let vorse = document.createElement('p')
+            let valueNow = document.createElement('p')
+            
+            title.innerHTML = obj.title
+            categories.innerHTML = 'Категория: ' + obj.categories_ru
+            puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
+            weight.innerHTML = 'Вес: ' + obj.weight
+            vorse.innerHTML = 'Ворс: ' + obj.vorse
             btn.innerHTML = 'Добавить в избранное'
+            
+            copyBtn.classList.add('copyBtn')
             let copy = document.createElement('img')
             copy.src = '../assets/img/icons/clipboard.svg'
+            if(hash == 'ru'){
+                categories.innerHTML = 'Категория: ' + obj.categories_ru
+                puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
+                weight.innerHTML = 'Вес: ' + obj.weight
+                vorse.innerHTML = 'Ворс: ' + obj.vorse
+                btn.innerHTML = 'Добавить в избранное'
+            } else if(hash == 'en'){
+                categories.innerHTML = 'Category: ' + obj.categories_ru
+                puchok.innerHTML = 'Number of bundles: ' + obj.valuePuchok + ' m2'
+                weight.innerHTML = 'Weight: ' + obj.weight
+                vorse.innerHTML = 'Pile: ' + obj.vorse
+                btn.innerHTML = 'Add to Favorites'
+            } else if(hash == 'uz'){
+                categories.innerHTML = 'Category: ' + obj.categories_ru
+                puchok.innerHTML = 'Number of bundles: ' + obj.valuePuchok + ' m2'
+                weight.innerHTML = "Og'irligi: " + obj.weight
+                vorse.innerHTML = 'Qopqoq: ' + obj.vorse
+                btn.innerHTML = "Sevimlilarga qo'shish"
+            }
 
             copy.onclick = () => {
                 navigator.clipboard.writeText(copyLink).then(function () {
@@ -213,7 +240,13 @@ let uploadCarpetArray = (param) => {
             window.location.href = `product.html?id=${item._id}#${usefullHash}`
         }
 
-        link.innerHTML = 'Подробная информация'
+        if(hash == 'ru'){
+            link.innerHTML = 'Подробная информация'
+        } else if(hash == 'en'){
+            link.innerHTML = 'Detailed information'
+        } else if(hash == 'uz'){
+            link.innerHTML = "Batafsil ma'lumot"
+        }
         mainDiv.id = item._id
 
         mainDivImages.src = item.taft[0]

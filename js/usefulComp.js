@@ -213,7 +213,7 @@ if (addLang != null) {
             } else {
                 location.href = window.location.pathname + '#' + val
             }
-            location.reload()
+            // location.reload()
         }
     }
 } else {
