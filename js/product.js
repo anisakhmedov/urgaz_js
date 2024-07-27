@@ -64,7 +64,7 @@ let getCarpetsProd = async () => {
             let categories = document.createElement('p')
             categories.innerHTML = 'Категория: ' + obj.categories_ru
             let puchok = document.createElement('p')
-            puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok
+            puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
             let weight = document.createElement('p')
             weight.innerHTML = 'Вес: ' + obj.weight
             let vorse = document.createElement('p')

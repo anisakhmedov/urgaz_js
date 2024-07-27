@@ -1,8 +1,95 @@
 let find_filter = document.querySelector('#find-filter');
+let objFilt = {
+    vorse: [],
+    categories: ''
+}
+
+for (let item of document.querySelector('#categories-filter').querySelectorAll('.item')) {
+    item.onclick = () => {
+        for (let el of document.querySelector('#categories-filter').querySelectorAll('.item')) {
+            el.classList.remove('active')
+        }
+
+        for (let par of arr) {
+            if (par.categories_eng == event.target.getAttribute('name')) {
+                filArr.push(par)
+                showData(filArr)
+            } else {
+                wrapper.innerHTML = 'Ничего не найдено :('
+            }
+        }
+    }
+}
+
+let filArr = []
+for (let item of document.querySelector('#vors-filter').querySelectorAll('.item')) {
+    item.onclick = () => {
+        filArr = []
+        for (let el of document.querySelector('#vors-filter').querySelectorAll('.item')) {
+            el.classList.remove('active')
+        }
+        item.classList.add('active')
+
+        for (let par of arr) {
+            if (event.target.getAttribute('name') == 1 && par.vorse.includes('ПП') && !par.vorse.includes('ПП-ПЭ')) {
+                filArr.push(par)
+                showData(filArr)
+            } else {
+                if (event.target.getAttribute('name') == 2 && par.vorse.includes('ПЭ') && !par.vorse.includes('ПП-ПЭ')) {
+                    filArr.push(par);
+                    showData(filArr)
+                } else {
+                    if (event.target.getAttribute('name') == 3 && par.vorse.includes('ПП-ПЭ')) {
+                        filArr.push(par);
+                        showData(filArr)
+                    }
+                }
+            }
+        }
+    }
+}
+
+for (let item of document.getElementById('type-filter').children) {
+    item.onclick = () => {
+        const someArr = arr
+        if (!item.querySelector('.check-box').querySelector('img').classList.contains('active')) {
+            if (item.querySelector('.check-box').getAttribute('name') == 1) {
+                for (let el of document.getElementById('type-filter').children) {
+                    el.querySelector('.check-box').querySelector('img').classList.remove('active')
+                }
+                filArr = someArr.filter(val => val.valuePuchok >= 100000 && val.valuePuchok <= 200000)
+                item.querySelector('.check-box').querySelector('img').classList.add('active')
+                showData(filArr)
+            } else if (item.querySelector('.check-box').getAttribute('name') == 2) {
+                for (let el of document.getElementById('type-filter').children) {
+                    el.querySelector('.check-box').querySelector('img').classList.remove('active')
+                }
+                filArr = someArr.filter(val => val.valuePuchok >= 200000 && val.valuePuchok <= 500000)
+                item.querySelector('.check-box').querySelector('img').classList.add('active')
+                showData(filArr)
+            } else if (item.querySelector('.check-box').getAttribute('name') == 3) {
+                for (let el of document.getElementById('type-filter').children) {
+                    el.querySelector('.check-box').querySelector('img').classList.remove('active')
+                }
+                filArr = someArr.filter(val => val.valuePuchok >= 500000 && val.valuePuchok <= 1000000)
+                item.querySelector('.check-box').querySelector('img').classList.add('active')
+                showData(filArr)
+            } else if (item.querySelector('.check-box').getAttribute('name') == 4) {
+                for (let el of document.getElementById('type-filter').children) {
+                    el.querySelector('.check-box').querySelector('img').classList.remove('active')
+                }
+                filArr = someArr.filter(val => val.valuePuchok > 1000000)
+                item.querySelector('.check-box').querySelector('img').classList.add('active')
+                showData(filArr)
+            }
+        } else{
+            item.querySelector('.check-box').querySelector('img').classList.remove('active')
+            showData(arr)
+        }
+    }
+}
 
 find_filter.addEventListener('click', () => {
-    obj_search.width.from = width_filter.children[0].value
-    obj_search.width.to = width_filter.children[1].value
 });
 
 let showFilter = document.querySelector('.open-filter')
@@ -66,7 +153,7 @@ let showData = (param) => {
             mainDivDiscColorsImages.src = imgCarpet
             mainDivDiscColorsImages.onclick = () => {
                 for (let taf of item.taft) {
-                    if(taf.toUpperCase().includes(event.target.src.split('code/')[1].split('.')[0])){
+                    if (taf.toUpperCase().includes(event.target.src.split('code/')[1].split('.')[0])) {
                         mainDivImages.src = taf
                     }
                 }
@@ -95,7 +182,7 @@ let showData = (param) => {
         mainDiv.id = item._id
         mainDivImgBottomText.innerHTML = item.title
         mainDivDiscVorsSpan.innerHTML = item.vorse
-        mainDivDiscPuchokSpan.innerHTML = item.valuePuchok
+        mainDivDiscPuchokSpan.innerHTML = item.valuePuchok + ' m2'
         mainDivDiscWeightSpan.innerHTML = item.weight
 
         mainDivImgTopShowImg.src = '../assets/img/icons/eye.svg'

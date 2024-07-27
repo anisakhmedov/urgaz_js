@@ -354,10 +354,10 @@ button {
                         background-position: center;
                     }
                     &.active {
-                        border: 3px solid #ffffff inset;
+                        border: 3px solid #ffffff !important;
                     }
                     &:hover {
-                        border: 3px solid #ffffff inset;
+                        border: 3px solid #ffffff !important;
                         cursor: pointer;
                     }
                     p {

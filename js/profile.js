@@ -122,7 +122,7 @@ let loadCarpet = (param) => {
                 <div class="text">
                 <h2>${val.item.title}</h2>
                 <p class="code">Вес: <span>${val.item.weight}</span></p>
-                <p class="color">Кол-во пучков: <span>${val.item.valuePuchok}</span></p>
+                <p class="color">Кол-во пучков: <span>${val.item.valuePuchok} m2</span></p>
                 <p class="category">Ворс: <span>${val.item.vorse}</span></p>
                 </div>
                 </div>
