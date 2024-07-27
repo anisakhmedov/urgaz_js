@@ -2,6 +2,14 @@ let userId = localStorage.user
 let user = {}
 let arrCarpets = []
 
+if(hash == 'ru'){
+    document.querySelector('.lang-inSaved').innerHTML = 'В избранном'
+} else if(hash == 'en'){
+    document.querySelector('.lang-inSaved').innerHTML = 'In favorites'
+} else if(hash == 'uz'){
+    document.querySelector('.lang-inSaved').innerHTML = 'Sevimlilar'
+}
+
 let UploadCarpets = () => {
     axios.get(api + '/carpets')
         .then((res) => {
@@ -70,14 +78,14 @@ let loadCarpet = (param) => {
                 <img src="${val.codes}" alt="">
                 <div class="text">
                 <h2>${val.item.title}</h2>
-                <p class="code">Вес: <span>${val.item.weight}</span></p>
-                <p class="color">Кол-во пучков: <span>${val.item.valuePuchok}</span></p>
-                <p class="category">Ворс: <span>${val.item.vorse}</span></p>
+                <p class="code">${hash == 'ru' ? 'Вес' : hash == 'en' ? 'Weight' : "Og'irligi"}: <span>${val.item.weight}</span></p>
+                <p class="color">${hash == 'ru' ? 'Кол-во пучков' : hash == 'en' ? 'Number of bundles' : "To'plamlar soni"}: <span>${val.item.valuePuchok}</span></p>
+                <p class="category">${hash == 'ru' ? 'Ворс' : hash == 'en' ? 'Pile' : "Qopqoq"}: <span>${val.item.vorse}</span></p>
                 </div>
                 </div>
                 <div class="actions">
-                <button class="showCarpet" onclick="openCarpet()">Посмотреть товар</button>
-                <button onclick="removeCarpetUser()">Удалить</button>
+                <button class="showCarpet" onclick="openCarpet()">${hash == 'ru' ? 'Посмотреть товар' : hash == 'en' ? 'View the product' : "Mahsulotni ko'ring"}</button>
+                <button onclick="removeCarpetUser()">${hash == 'ru' ? 'Удалить' : hash == 'en' ? 'Remove' : "O'chirish"}</button>
                 </div>
                 `
             items.append(div)

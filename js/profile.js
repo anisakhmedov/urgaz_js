@@ -108,7 +108,7 @@ let loadCarpet = (param) => {
             }
         }
     }
-
+    
     let items = document.querySelector('.items')
     items.innerHTML = ''
     if (correctCarpet.length != 0) {
