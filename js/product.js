@@ -158,23 +158,6 @@ let uploadCarpets = (param) => {
             }
             for (let item of selectCarpet.children) {
                 if (item.src.toLowerCase().includes(carpetCodeIdPage.toLowerCase())) {
-                    function centerItVariableWidth(target, outer) {
-                        var out = $(outer);
-                        var tar = $(target);
-                        var x = out.width();
-                        var y = tar.outerWidth(true);
-                        var z = tar.index();
-                        var q = 0;
-                        var m = out.find('li');
-
-                        for (var i = 0; i < z; i++) {
-                            q += $(m[i]).outerWidth(true);
-                        }
-
-                        out.scrollLeft(Math.max(0, q - (x - y) / 2));
-                    }
-
-                    centerItVariableWidth(item, '.thumbnails');
                     item.classList.add('active')
                 } else {
                     item.classList.remove('active')
