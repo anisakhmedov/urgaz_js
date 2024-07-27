@@ -54,7 +54,7 @@ let getCarpetsProd = async () => {
                     item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
                 }
             }
-            uploadCarpetArray(getMultipleRandom(arr, widthArray))
+            uploadCarpetArray(arr.filter(item => item._id != carpetIdPage).splice(0, widthArray))
         })
         .catch((err) => console.error(err))
 
