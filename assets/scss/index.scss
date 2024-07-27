@@ -1065,6 +1065,7 @@ button {
         }
         .right {
             margin-left: 40px;
+            width: 40%;
             overflow: hidden;
             .thumbnails {
                 width: 100%;
@@ -1103,11 +1104,21 @@ button {
                 h2 {
                     font-size: 48px;
                 }
+                .copyBtn{
+                    display: flex;
+                    margin-top: 10px;
+                    gap: 10px;
+                    align-items: center;
+                    img{
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
                 button {
                     font-size: 20px;
                     padding: 12px 30px;
                     border: none;
-                    margin-top: 10px;
                     width: fit-content;
                     color: white;
                     border-radius: 10px;

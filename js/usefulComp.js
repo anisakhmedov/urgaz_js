@@ -37,28 +37,11 @@ let getForLoad = () => {
                     item.image.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/code/${ket}.jpg`)
                     item.taft.push(`https://urgaz.s3.ap-northeast-1.amazonaws.com/Carpet/${item.title.toUpperCase()}/taft/${ket}.jpg`)
                 }
-                for(let img of item.image) {
-                    let div = document.createElement('img')
-                    div.src = img
-                    div.setAttribute('hidden', 'hidden')
-                    document.body.appendChild(div)
-                }
-                for(let img of item.taft) {
-                    let div = document.createElement('img')
-                    div.src = img
-                    div.setAttribute('hidden', 'hidden')
-                    document.body.appendChild(div)
-                }
             }
-            console.log(arr);
-            // getAllImages(arr)
         })
         .catch((err) => console.error(err))
 }
 getForLoad()
-// if (!localStorage.user) {
-//     window.location.href = './pages/register.html'
-// }
 
 let useArrLang = usefullLang
 let correctArray;

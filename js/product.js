@@ -24,6 +24,7 @@ if (window.innerWidth > 950) {
     widthArray = 3
 }
 
+let copyLink = ''
 let arr = []
 let obj = {}
 
@@ -69,8 +70,21 @@ let getCarpetsProd = async () => {
             let vorse = document.createElement('p')
             vorse.innerHTML = 'Ворс: ' + obj.vorse
             let valueNow = document.createElement('p')
+
+            let copyBtn = document.createElement('div')
+            copyBtn.classList.add('copyBtn')
             let btn = document.createElement('button')
             btn.innerHTML = 'Добавить в избранное'
+            let copy = document.createElement('img')
+            copy.src = '../assets/img/icons/clipboard.svg'
+
+            copy.onclick = () => {
+                navigator.clipboard.writeText(copyLink).then(function () {
+                    console.log('Текст успешно скопирован в буфер обмена');
+                }).catch(function (err) {
+                    console.error('Произошла ошибка при копировании текста: ', err);
+                });
+            }
 
             let userNow = []
 
@@ -108,7 +122,8 @@ let getCarpetsProd = async () => {
                         console.error(err);
                     })
             }
-            info.append(categories, title, valueNow, vorse, weight, puchok, btn)
+            copyBtn.append(btn, copy)
+            info.append(categories, title, valueNow, vorse, weight, puchok, copyBtn)
 
             uploadCarpets(obj)
         })
@@ -128,15 +143,28 @@ let uploadCarpets = (param) => {
         let img = document.createElement('img')
         img.src = item
         selectCarpet.appendChild(img)
-
+        
+        let code = item.split('/code/')[1].split('.')[0]
+        if (window.location.href.includes('carpetID')) {
+            let linkCopy = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
+            copyLink = linkCopy
+        } else {
+            let linkCopy = window.location.href = `product.html?id=${carpetIdPage}?carpetID=${code}#${usefullHash}`
+            console.log(linkCopy);
+            
+        }
         img.onclick = () => {
-            let code = item.split('/code/')[1].split('.')[0]
-
+            code = item.split('/code/')[1].split('.')[0]
+            
             if (window.location.href.includes('carpetID')) {
-                window.location.href = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
+                let linkCopy = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
+                copyLink = linkCopy
             } else {
-                window.location.href = `product.html?id=${carpetIdPage}?carpetID=${code}#${usefullHash}`
+                let linkCopy = window.location.href = `product.html?id=${carpetIdPage}?carpetID=${code}#${usefullHash}`
+                console.log(linkCopy);
+    
             }
+
             for (let carpetTaft of v) {
                 if (carpetTaft.toLowerCase().includes(code.toLowerCase())) {
                     mainCarp.src = carpetTaft
@@ -144,7 +172,7 @@ let uploadCarpets = (param) => {
                 }
             }
             for (let items of selectCarpet.children) {
-                if (mainCarp.src.split('-')[3].split('.')[0].toLowerCase() != items.src.split('-')[3].split('.')[0].toLowerCase()) {
+                if (mainCarp.src.split('taft/')[1].split('.')[0].toLowerCase() != items.src.split('code/')[1].split('.')[0].toLowerCase()) {
                     items.classList.remove('active')
                 }
             }

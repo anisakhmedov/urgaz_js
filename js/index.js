@@ -34,7 +34,6 @@ let GetData = () => {
                 }
             }
             showData(arr)
-            // getAllImages(arr)
         })
         .catch((err) => console.error(err))
 }
@@ -45,8 +44,6 @@ let wrapper = document.querySelector('.wrapper')
 let showData = (param) => {
     wrapper.innerHTML = ''
     for (let item of param) {
-
-
         let mainDiv = document.createElement('div')
         let mainDivImg = document.createElement('div')
         let mainDivImages = document.createElement('img')
@@ -70,10 +67,8 @@ let showData = (param) => {
             mainDivDiscColorsImages.onclick = () => {
                 for (let taf of item.taft) {
                     if(taf.toUpperCase().includes(event.target.src.split('code/')[1].split('.')[0])){
-                        console.log(taf);
                         mainDivImages.src = taf
                     }
-                    // event.target.src.split('code/')[1].split('.')[0]
                 }
             }
             mainDivDiscColors.append(mainDivDiscColorsImages)
