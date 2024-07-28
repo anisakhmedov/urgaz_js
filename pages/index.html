@@ -12,7 +12,7 @@
     <div class="_margin"></div>
     <main id="catalogue" class="container">
         <div class="menu-header">
-            
+
         </div>
         <div class="left-side">
             <div class="filter-x">
@@ -23,16 +23,24 @@
                 <label for="" class="lang-filter-cat">Категория</label>
                 <div class="blocks" id="categories-filter">
                     <div class="item" name="Carpet">
-                        <p name="Carpet" class="lang-filter-cat-carpet">Ковры</p>
+                        <a href="#wrapper">
+                            <p name="Carpet" class="lang-filter-cat-carpet">Ковры</p>
+                        </a>
                     </div>
                     <div class="item" name="Tufting">
-                        <p class="lang-filter-cat-tuft" name="Tufting">Tufting</p>
+                        <a href="#wrapper">
+                            <p class="lang-filter-cat-tuft" name="Tufting">Tufting</p>
+                        </a>
                     </div>
                     <div class="item" name="Bath">
-                        <p name="Bath" class="lang-filter-cat-bath">Ванные коврики</p>
+                        <a href="#wrapper">
+                            <p name="Bath" class="lang-filter-cat-bath">Ванные коврики</p>
+                        </a>
                     </div>
                     <div class="item" name="Grass">
-                        <p name="Grass" class="lang-filter-cat-grass">Газон</p>
+                        <a href="#wrapper">
+                            <p name="Grass" class="lang-filter-cat-grass">Газон</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -40,13 +48,19 @@
                 <label for="" class="lang-filter-vors">Ворс</label>
                 <div class="blocks" id="vors-filter">
                     <div class="item" name="1">
-                        <p name="1">ПП</p>
+                        <a href="#wrapper">
+                            <p name="1">ПП</p>
+                        </a>
                     </div>
                     <div class="item" name="2">
-                        <p name="2">ПЭ</p>
+                        <a href="#wrapper">
+                            <p name="2">ПЭ</p>
+                        </a>
                     </div>
                     <div class="item" name="3">
-                        <p name="3">ПП-ПЭ</p>
+                        <a href="#wrapper">
+                            <p name="3">ПП-ПЭ</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -54,36 +68,43 @@
                 <label for="" class="lang-filter-puch">Кол-во пучков</label>
                 <div class="choose-blocks" id="type-filter">
                     <div class="select">
-                        <div class="check-box" name="1">
-                            <img class="" src="../assets/img/icons/check.svg" alt="">
-                        </div>
-                        <span>
-                            100,000 - 200,000
-                        </span>
+                        <a href="#wrapper">
+                            <div class="check-box" name="1">
+                                <img class="" src="../assets/img/icons/check.svg" alt="">
+                            </div>
+                            <span>
+                                100,000 - 200,000
+                            </span>
+                        </a>
                     </div>
                     <div class="select">
-                        <div class="check-box" name="2">
-                            <img class="" src="../assets/img/icons/check.svg" alt="">
-                        </div>
-                        <span>
-                            200,000 - 500,000
-                        </span>
+                        <a href="#wrapper">
+                            <div class="check-box" name="2">
+                                <img class="" src="../assets/img/icons/check.svg" alt="">
+                            </div>
+                            <span>
+                                200,000 - 500,000
+                            </span>
+                        </a>
                     </div>
                     <div class="select">
-                        <div class="check-box" name="3">
-                            <img class="" src="../assets/img/icons/check.svg" alt="">
-                        </div>
-                        <span>
-                            500,000 - 1,000,000
-                        </span>
+                        <a href="#wrapper">
+                            <div class="check-box" name="3">
+                                <img class="" src="../assets/img/icons/check.svg" alt="">
+                            </div>
+                            <span>
+                                500,000 - 1,000,000
+                            </span>
+                        </a>
                     </div>
                     <div class="select">
-                        <div class="check-box" name="4">
-                            <img class="" src="../assets/img/icons/check.svg" alt="">
-                        </div>
-                        <span>
-                            < 1,000,000
-                        </span>
+                        <a href="#wrapper">
+                            <div class="check-box" name="4">
+                                <img class="" src="../assets/img/icons/check.svg" alt="">
+                            </div>
+                            <span>
+                                < 1,000,000 </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -118,7 +139,7 @@
                     </ul>
                     <button>Посмотреть коллекцию</button>
                 </div>
-                <div class="filter-block">
+                <div class="filter-block" id="wrapper">
                     <div class="search-inp">
                         <img src="../assets/img/icons/search.svg" alt="">
                         <input type="text" placeholder="Поиск" class="search lang-cat_search">
@@ -171,11 +192,24 @@
         </div>
     </main>
     <footer class="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
     <script src="../js/lang/catalogue-lang.js"></script>
     <script src="../js/lang/useful-lang.js"></script>
     <script src="../js/usefulComp.js"></script>
     <script src="../js/index.js"></script>
+    <script>
+        let $root = $('html, body');
+        $('a[href^="#"]').click(function () {
+            let href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                // window.location.hash = href;
+            });
+            return false;
+        });
+    </script>
 </body>
 
 </html>

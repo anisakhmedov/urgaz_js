@@ -347,11 +347,11 @@
     #catalogue .right-side .main-side .wrapper .carpet {
         .img {
             .img-carpet {
-                height: 120px;
+                height: 200px !important;
             }
             .bottom {
                 p {
-                    font-size: 20px;
+                    font-size: 28px;
                     line-height: 10px;
                 }
             }
@@ -461,6 +461,15 @@
         overflow: auto;
         .carpet .img {
             height: 185px !important;
+        }
+    }
+    #login form {
+        width: 340px !important;
+        input {
+            height: 40px !important;
+        }
+        button{
+            height: 40px !important;
         }
     }
 }
