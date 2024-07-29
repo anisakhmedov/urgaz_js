@@ -131,14 +131,6 @@
     #catalogue .right-side .main-side .wrapper {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        .carpet {
-            .img {
-                .img-carpet {
-                    object-fit: cover;
-                    object-position: bottom;
-                }
-            }
-        }
     }
     .header {
         padding: 25px 45px;

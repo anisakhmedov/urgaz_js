@@ -451,7 +451,7 @@ button {
                         border-radius: 3px;
                         border: 1px solid black !important;
                     }
-                    a{
+                    a {
                         display: flex;
                         align-items: center;
                         gap: 9px;
@@ -649,6 +649,8 @@ button {
                             width: 100%;
                             height: fit-content;
                             z-index: 1;
+                            object-fit: cover;
+                            object-position: bottom;
                         }
                         .top {
                             top: 10px;
