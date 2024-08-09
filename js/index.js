@@ -6,6 +6,7 @@ let objFilt = {
 
 for (let item of document.querySelector('#categories-filter').querySelectorAll('.item')) {
     item.onclick = () => {
+        filArr = []
         for (let el of document.querySelector('#categories-filter').querySelectorAll('.item')) {
             el.classList.remove('active')
         }
@@ -52,6 +53,7 @@ for (let item of document.querySelector('#vors-filter').querySelectorAll('.item'
 for (let item of document.getElementById('type-filter').children) {
     item.onclick = () => {
         const someArr = arr
+        filArr = []
         if (!item.querySelector('.check-box').querySelector('img').classList.contains('active')) {
             if (item.querySelector('.check-box').getAttribute('name') == 1) {
                 for (let el of document.getElementById('type-filter').children) {

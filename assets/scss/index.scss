@@ -1268,6 +1268,15 @@ button {
 }
 
 #cart-page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .footer{
+        position: absolute;
+        height: fit-content;
+        align-self: end;
+        bottom: 0;
+    }
     h1 {
         font-size: 24px;
         font-weight: 600;
