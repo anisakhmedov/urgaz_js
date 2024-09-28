@@ -34,6 +34,7 @@
         }
         .right-side {
             padding-left: 23px;
+            max-width: 950px;
             .main-side {
                 button {
                     height: 30px;
@@ -143,13 +144,15 @@
         display: block;
         .right-side {
             padding-left: 0;
-            .banner {
+            max-width: none;
+            #sync1 {
                 display: none;
             }
         }
         .open-filter {
             display: flex;
         }
+
         .left-side {
             transition: 0.3s ease;
             padding: 0 !important;
@@ -165,21 +168,6 @@
             &.active {
                 height: fit-content;
             }
-        }
-    }
-    #catalogue .right-side .main-side .banner {
-        label {
-            margin-top: 20px;
-        }
-        button {
-            margin-top: 20px;
-        }
-        padding: 30px 45px;
-        p {
-            font-size: 22px;
-        }
-        .title {
-            font-size: 36px;
         }
     }
     .footer {

@@ -280,12 +280,12 @@ if (footer) {
                         </a>
                     </li>
                     <li>
-                        <a href="/profile.html">
+                        <a onclick=checkReg() class="profile">
                             ${useArrLang.my_profile_footer[hash.slice(1)]}
                         </a>
                     </li>
                     <li>
-                        <a href="/liked">
+                        <a onclick=checkReg() class="saved">
                             ${useArrLang.save_footer[hash.slice(1)]}
                         </a>
                     </li>
@@ -403,6 +403,23 @@ removeRegForm.onclick = () => {
 let checkReg = () => {
     if (!localStorage.user) {
         document.querySelector('.register-window').classList.add('active')
+    } else {
+        // console.log(event.target);
+        if (event.target.src) {
+            if (event.target.src.includes('star')) {
+                window.location.href = 'cart.html'
+            } else if (event.target.src.includes('contact')) {
+                window.location.href = 'profile.html'
+            }
+        } else{
+            if(event.target.getAttribute('class').includes('saved')) {
+                window.location.href = 'cart.html'
+            } else if (event.target.getAttribute('class').includes('profile')){
+                window.location.href = 'profile.html'
+            }
+        }
+
+
     }
-    
+
 }
