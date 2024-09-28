@@ -304,7 +304,7 @@
     .left-side .filter .blocks .item p {
         font-size: 16px !important;
     }
-    #login form {
+    .register-window form {
         width: 400px;
     }
     #product-page {
@@ -451,7 +451,7 @@
             height: 185px !important;
         }
     }
-    #login form {
+    .register-window form {
         width: 340px !important;
         input {
             height: 40px !important;
@@ -551,7 +551,7 @@
     .lang-title-reg {
         font-size: 36px !important;
     }
-    #login {
+    .register-window {
         height: 100vh;
         form {
             &.active {
@@ -574,7 +574,7 @@
 }
 
 @media only screen and (max-width: 375px) {
-    #login {
+    .register-window {
         &.active {
             margin-top: -60px;
         }
@@ -643,5 +643,15 @@
                 }
             }
         }
+    }
+    .other-carpets {
+        grid-template-columns: repeat(1, 1fr);
+        height: auto !important;
+        grid-auto-rows: auto;
+        display: grid !important;
+        overflow: auto;
+    }
+    .other-carpets .carpet .img {
+        height: fit-content !important;
     }
 }

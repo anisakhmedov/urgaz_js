@@ -12,7 +12,7 @@ function getCarpetIdFromUrl() {
 }
 
 const carpetCodeIdPage = getCarpetIdFromUrl();
-let apiCarpets = 'https://urgaz-basedate-64ecc72d32d4.herokuapp.com/'
+let apiCarpets = 'http://localhost:3000/'
 
 let vizual = []
 let colors = []
@@ -28,11 +28,11 @@ let copyLink = ''
 let arr = []
 let obj = {}
 
-if(hash == 'ru'){
+if (hash == 'ru') {
     document.querySelector('.lang-prod-more').innerHTML = 'Остальные наши товары:'
-} else if(hash == 'en'){
+} else if (hash == 'en') {
     document.querySelector('.lang-prod-more').innerHTML = 'The rest of our products:'
-} else if(hash == 'uz'){
+} else if (hash == 'uz') {
     document.querySelector('.lang-prod-more').innerHTML = 'Qolgan mahsulotlarimiz:'
 }
 
@@ -74,30 +74,30 @@ let getCarpetsProd = async () => {
             let weight = document.createElement('p')
             let vorse = document.createElement('p')
             let valueNow = document.createElement('p')
-            
+
             title.innerHTML = obj.title
             categories.innerHTML = 'Категория: ' + obj.categories_ru
             puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
             weight.innerHTML = 'Вес: ' + obj.weight
             vorse.innerHTML = 'Ворс: ' + obj.vorse
             btn.innerHTML = 'Добавить в избранное'
-            
+
             copyBtn.classList.add('copyBtn')
             let copy = document.createElement('img')
             copy.src = '../assets/img/icons/clipboard.svg'
-            if(hash == 'ru'){
+            if (hash == 'ru') {
                 categories.innerHTML = 'Категория: ' + obj.categories_ru
                 puchok.innerHTML = 'Количество пучков: ' + obj.valuePuchok + ' m2'
                 weight.innerHTML = 'Вес: ' + obj.weight
                 vorse.innerHTML = 'Ворс: ' + obj.vorse
                 btn.innerHTML = 'Добавить в избранное'
-            } else if(hash == 'en'){
+            } else if (hash == 'en') {
                 categories.innerHTML = 'Category: ' + obj.categories_ru
                 puchok.innerHTML = 'Number of bundles: ' + obj.valuePuchok + ' m2'
                 weight.innerHTML = 'Weight: ' + obj.weight
                 vorse.innerHTML = 'Pile: ' + obj.vorse
                 btn.innerHTML = 'Add to Favorites'
-            } else if(hash == 'uz'){
+            } else if (hash == 'uz') {
                 categories.innerHTML = 'Category: ' + obj.categories_ru
                 puchok.innerHTML = 'Number of bundles: ' + obj.valuePuchok + ' m2'
                 weight.innerHTML = "Og'irligi: " + obj.weight
@@ -114,10 +114,11 @@ let getCarpetsProd = async () => {
             }
 
             let userNow = []
-
-            axios.get(apiCarpets + 'users/' + localStorage.user)
-                .then((res) => userNow = res.data)
-                .catch((err) => console.error(err))
+            if (localStorage.user) {
+                axios.get(apiCarpets + 'users/' + localStorage.user)
+                    .then((res) => userNow = res.data)
+                    .catch((err) => console.error(err))
+            }
 
             btn.onclick = () => {
                 let sendObj = userNow
@@ -137,17 +138,21 @@ let getCarpetsProd = async () => {
                     image: sendObj.image,
                     codeCarpets: sendObj.codeCarpets
                 };
+                if (localStorage.user) {
 
-                axios.patch(`${apiCarpets}users/${localStorage.user}`, fm, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then((res) => {
+                    axios.patch(`${apiCarpets}users/${localStorage.user}`, fm, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     })
-                    .catch((err) => {
-                        console.error(err);
-                    })
+                        .then((res) => {
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        })
+                } else{
+                    document.querySelector('.register-window').classList.add('active');
+                }
             }
             copyBtn.append(btn, copy)
             info.append(categories, title, valueNow, vorse, weight, puchok, copyBtn)
@@ -170,7 +175,7 @@ let uploadCarpets = (param) => {
         let img = document.createElement('img')
         img.src = item
         selectCarpet.appendChild(img)
-        
+
         let code = item.split('/code/')[1].split('.')[0]
         if (window.location.href.includes('carpetID')) {
             let linkCopy = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
@@ -178,18 +183,18 @@ let uploadCarpets = (param) => {
         } else {
             let linkCopy = window.location.href = `product.html?id=${carpetIdPage}?carpetID=${code}#${usefullHash}`
             console.log(linkCopy);
-            
+
         }
         img.onclick = () => {
             code = item.split('/code/')[1].split('.')[0]
-            
+
             if (window.location.href.includes('carpetID')) {
                 let linkCopy = window.location.href.replace(`carpetID=${carpetCodeIdPage}`, `carpetID=${code}`)
                 copyLink = linkCopy
             } else {
                 let linkCopy = window.location.href = `product.html?id=${carpetIdPage}?carpetID=${code}#${usefullHash}`
                 console.log(linkCopy);
-    
+
             }
 
             for (let carpetTaft of v) {
@@ -240,11 +245,11 @@ let uploadCarpetArray = (param) => {
             window.location.href = `product.html?id=${item._id}#${usefullHash}`
         }
 
-        if(hash == 'ru'){
+        if (hash == 'ru') {
             link.innerHTML = 'Подробная информация'
-        } else if(hash == 'en'){
+        } else if (hash == 'en') {
             link.innerHTML = 'Detailed information'
-        } else if(hash == 'uz'){
+        } else if (hash == 'uz') {
             link.innerHTML = "Batafsil ma'lumot"
         }
         mainDiv.id = item._id

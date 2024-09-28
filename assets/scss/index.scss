@@ -47,7 +47,7 @@ button {
     left: 0;
     right: 0;
     height: 105px;
-    z-index: 10;
+    z-index: 15;
     background-color: #ffffff80 !important;
     backdrop-filter: blur(35px);
     box-shadow: 0 -10px 42px #00000025;
@@ -479,92 +479,55 @@ button {
     .right-side {
         width: 100%;
         padding-left: 53px;
+        max-width: 1450px;
         .main-side {
             display: flex;
             flex-direction: column;
             align-items: center;
+            #sync1 .item {
+                background: #0c83e7;
+                color: #fff;
+                height: 280px;
+                border-radius: 3px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .owl-theme .owl-nav [class*="owl-"] {
+                transition: all 0.3s ease;
+            }
+            .owl-theme .owl-nav [class*="owl-"].disabled:hover {
+                background-color: #d6d6d6;
+            }
+
+            #sync1.owl-theme {
+                position: relative;
+            }
+            #sync1.owl-theme .owl-next,
+            #sync1.owl-theme .owl-prev {
+                width: 22px;
+                height: 40px;
+                margin-top: -20px;
+                position: absolute;
+                top: 50%;
+            }
+            #sync1.owl-theme .owl-prev {
+                left: 10px;
+            }
+            #sync1.owl-theme .owl-next {
+                right: 10px;
+            }
             .banner {
                 width: 100%;
-                padding: 35px 60px;
+                // padding: 35px 60px;
+                height: 250px;
                 border-radius: 12px;
                 color: white !important;
                 background-image: url(../img/bg-banner.png);
                 background-position: center !important;
                 background-size: cover;
                 background-repeat: no-repeat;
-
-                .title {
-                    font-size: 48px;
-                    font-weight: 800;
-                    margin-bottom: -10px;
-                }
-                p {
-                    font-size: 26px;
-                    margin-top: 10px 0 28px 0;
-                    font-weight: 600;
-                }
-                label {
-                    font-size: 16px;
-                    font-weight: 500;
-                    margin-top: 25px;
-                    display: block;
-                }
-                ul {
-                    list-style: disc !important;
-                    li {
-                        font-size: 16px;
-                        font-weight: 500;
-                        margin-left: 17px;
-                    }
-                }
-                button {
-                    padding: 18px 36px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: rgb(220, 9, 9);
-                    font-size: 16px;
-                    font-weight: 700;
-                    color: white !important;
-                    border: none;
-                    border-radius: 12px;
-                    margin-top: 25px;
-                    position: relative;
-                    overflow: hidden;
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: -10px;
-                        bottom: 0;
-                        top: 0;
-                        max-height: 100%;
-                        height: 100%;
-                        max-width: 43px;
-                        width: 100%;
-                        filter: brightness(0) invert(1);
-                        opacity: 40%;
-                        background-image: url(../img/logo/back-footer.png);
-                        background-size: cover;
-                        background-position: center;
-                    }
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        right: -10px;
-                        bottom: 0;
-                        top: 0;
-                        max-height: 100%;
-                        height: 100%;
-                        max-width: 43px;
-                        width: 100%;
-                        filter: brightness(0) invert(1);
-                        opacity: 40%;
-                        transform: rotate(180deg);
-                        background-image: url(../img/logo/back-footer.png);
-                        background-size: cover;
-                        background-position: center;
-                    }
-                }
             }
             .filter-block {
                 width: 100%;
@@ -801,53 +764,38 @@ button {
     }
 }
 
-#login {
-    display: flex;
+.register-window {
+    display: none;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #00000080;
+    backdrop-filter: blur(10px);
     height: 100%;
     width: 100%;
+    &.active {
+        display: flex;
+    }
     h1 {
         text-align: center;
         font-size: 48px;
+        color: white;
     }
-    .lang {
+    .bg-reg {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        .languages {
-            position: absolute;
-            display: none;
-            top: 120%;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            flex-direction: column;
-            color: white;
-            font-weight: 600;
-            border-radius: 10px;
-            overflow: hidden;
-            &.active {
-                display: flex;
-            }
-            div {
-                transition: 0.3s ease;
-                padding: 10px;
-                background-color: rgb(220, 9, 9);
-                height: 100%;
-                &:hover {
-                    background-color: white;
-                    color: rgb(220, 9, 9);
-                    cursor: pointer;
-                }
-                &:first-child {
-                    border-bottom: 1px solid white;
-                }
-                &:last-child {
-                    border-top: 1px solid white;
-                }
-            }
-        }
+        top: 0;
+        left: 0;
+        z-index: 15;
+        bottom: 0;
+        right: 0;
+        // background-color: white;
     }
+
     .correct {
         text-align: left;
         width: 100%;
@@ -858,9 +806,13 @@ button {
             display: block;
         }
     }
+    .main {
+        z-index: 17;
+    }
     form {
         display: none;
         width: 500px;
+        z-index: 17;
         &.active {
             display: flex;
             align-items: center;
@@ -869,6 +821,7 @@ button {
         }
         p {
             font-size: 20px;
+            color: white;
             margin-top: 10px;
             text-decoration: underline !important;
             &:hover {
@@ -1271,7 +1224,7 @@ button {
     display: flex;
     flex-direction: column;
     position: relative;
-    .footer{
+    .footer {
         position: absolute;
         height: fit-content;
         align-self: end;

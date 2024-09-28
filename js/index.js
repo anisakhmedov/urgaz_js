@@ -84,7 +84,7 @@ for (let item of document.getElementById('type-filter').children) {
                 item.querySelector('.check-box').querySelector('img').classList.add('active')
                 showData(filArr)
             }
-        } else{
+        } else {
             item.querySelector('.check-box').querySelector('img').classList.remove('active')
             showData(arr)
         }
@@ -230,8 +230,19 @@ let showData = (param) => {
 
         mainDivImgStarShow.onclick = () => {
             let correceCarpet = event.target.parentNode.parentNode.parentNode.querySelector('.img-carpet').src.split('taft/')[1].split('.jpg')[0]
-            addInCart(correceCarpet)
+            if (!localStorage.user) {
+                document.querySelector('.register-window').classList.add('active')
+            } else {
+                addInCart(correceCarpet)
+            }
         }
+
+        
+        mainDivImgStarShowImg.onclick = () => {
+            console.log('hi');
+            
+        }
+
 
         for (let langCarpet in lang) {
             for (let langItemCarpet of document.querySelectorAll('.lang-' + langCarpet)) {
@@ -246,11 +257,13 @@ let showData = (param) => {
 
 let userNow = []
 let GetUser = () => {
-    axios.get(api + '/users/' + localStorage.user)
-        .then((res) => {
-            userNow = res.data
-        })
-        .catch((err) => console.error(err))
+    if (localStorage.user) {
+        axios.get(api + '/users/' + localStorage.user)
+            .then((res) => {
+                userNow = res.data
+            })
+            .catch((err) => console.error(err))
+    }
 }
 GetUser()
 
